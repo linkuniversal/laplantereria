@@ -3,94 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>La Planterería | Café, Pastelería, Plantas & Deco en Banfield</title>
-    <meta name="description" content="Tu nuevo lugar favorito en Banfield. Café de especialidad, pastelería artesanal, menú sin harinas, 16 variedades de cookies, vivero boutique y noches de tarot.">
+    <title>La Planterería | Café, Pastelería, Plantas &amp; Deco en Banfield</title>
+    <meta name="description" content="Tu rincón favorito en Banfield. Café de especialidad, pastelería artesanal, menú sin harinas, 16 variedades de cookies horneadas a diario, vivero boutique y noches de tarot.">
 
-    <meta name="theme-color" content="#F5E6D3">
+    <meta name="theme-color" content="#485E2E">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <!-- TIPOGRAFÍAS DE PRESTIGIO: FRAUNCES + PLUS JAKARTA SANS + SPACE GROTESK -->
+    <!-- TIPOGRAFÍAS DE PRESTIGIO Y CARTELERÍA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,700;1,9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600;1,9..144,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
 
-    <!-- MOTOR DE MAPA INTERACTIVO (LEAFLET HD) -->
+    <!-- MOTOR DE MAPA INTERACTIVO LEAFLET HD -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <style>
         /* ==========================================================================
-           1. ADN CROMÁTICO & SISTEMA MULTI-ATMÓSFERA LA PLANTERERÍA
+           1. SISTEMA CROMÁTICO Y ADN VISUAL DE LA PLANTERERÍA
            ========================================================================== */
         :root {
-            /* MODO 1: RINCÓN BOTÁNICO (Paleta Oficial de Marca) */
-            --bg-body: #F5E6D3;               /* Crema lino cálido de su feed */
-            --bg-surface: #FFFFFF;            /* Porcelana blanca pura */
-            --bg-surface-tint: #ECE0CE;       /* Crema de sésamo suave */
-            --color-botanic: #536A36;         /* Verde follaje titular */
-            --color-monstera: #586D42;        /* Verde del isotipo SVG */
-            --color-dark: #232B19;            /* Carbón orgánico profundo */
-            --color-earth: #8C6442;           /* Terracota / Café tostado */
-            --color-terracotta: #D36C47;      /* Acento cálido alfarería */
-            --color-border: rgba(83, 106, 54, 0.18);
-            --color-border-hover: #536A36;
-            --color-text-main: #2A3320;
-            --color-text-muted: #647053;
-            --badge-bg: #EAE3D4;
-            --badge-text: #485E2F;
+            /* Tonos Botánicos & Orgánicos */
+            --plant-cream-soft: #F5EFE6;      /* Lino cálido de lectura */
+            --plant-cream-base: #EFE6D8;      /* Crema de fondo terroso */
+            --plant-white-pure: #FFFFFF;      /* Blanco porcelana puro */
+            --plant-container-gold: #EAE0CD;  /* Contenedor gastronómico tostado */
+            
+            --plant-green-vibrant: #67843D;   /* Verde brote vivo */
+            --plant-green-deep: #485E2E;      /* Verde monstera institucional */
+            --plant-dark-forest: #232D16;     /* Carbón vegetal profundo */
+            --plant-black-pure: #161C0E;
+            
+            --plant-terracotta: #C86438;      /* Terracota maceta */
+            --plant-terracotta-deep: #9F451F;
+            --plant-warm-gold: #CCA048;       /* Acento místico / tostado */
 
-            --shadow-card: 0 10px 28px -6px rgba(42, 51, 32, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
-            --shadow-hover: 0 16px 36px -8px rgba(83, 106, 54, 0.22), 0 4px 12px rgba(0, 0, 0, 0.04);
-            --shadow-glow: 0 12px 32px -6px rgba(83, 106, 54, 0.35);
+            --border-organic: rgba(40, 50, 24, 0.22);
+            --border-strong: #2A361B;
+            --border-black: #161C0E;
 
             --font-serif: 'Fraunces', Georgia, serif;
             --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             --font-mono: 'Space Grotesk', monospace;
+
+            --shadow-block: 4px 4px 0px #2A361B;
+            --shadow-block-warm: 4px 4px 0px #8C6239;
+            --shadow-card: 0 10px 28px -6px rgba(35, 45, 22, 0.10);
             --spring: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* MODO 2: CAFÉ DE ESPECIALIDAD & ESPRESSO */
-        body[data-mood="espresso"] {
-            --bg-body: #EFE6DC;
-            --bg-surface: #FFFFFF;
-            --bg-surface-tint: #E2D4C3;
-            --color-botanic: #5A3F2E;
-            --color-monstera: #6D4C38;
-            --color-dark: #261912;
-            --color-earth: #A6734E;
-            --color-terracotta: #BC542A;
-            --color-border: rgba(90, 63, 46, 0.18);
-            --color-border-hover: #5A3F2E;
-            --color-text-main: #2D1E16;
-            --color-text-muted: #725D50;
-            --badge-bg: #E5D6C5;
-            --badge-text: #4D3323;
-            --shadow-glow: 0 12px 32px -6px rgba(90, 63, 46, 0.35);
-        }
-
-        /* MODO 3: TARDE DE FLORES & PASTELERÍA */
-        body[data-mood="flores"] {
-            --bg-body: #F4EBE8;
-            --bg-surface: #FFFFFF;
-            --bg-surface-tint: #EADCD8;
-            --color-botanic: #68484B;
-            --color-monstera: #755255;
-            --color-dark: #2B1B1D;
-            --color-earth: #A8656B;
-            --color-terracotta: #CE5A64;
-            --color-border: rgba(104, 72, 75, 0.18);
-            --color-border-hover: #68484B;
-            --color-text-main: #2D1D1F;
-            --color-text-muted: #775A5D;
-            --badge-bg: #ECDCD8;
-            --badge-text: #59393C;
-            --shadow-glow: 0 12px 32px -6px rgba(104, 72, 75, 0.35);
-        }
-
-        /* ==========================================================================
-           2. RESET & ESTRUCTURA BASE
-           ========================================================================== */
         * {
             margin: 0;
             padding: 0;
@@ -99,54 +61,113 @@
         }
 
         html {
-            font-size: 16px;
+            background-color: var(--plant-cream-soft);
             scroll-behavior: smooth;
-            background-color: var(--bg-body);
         }
 
         body {
-            background-color: var(--bg-body);
-            color: var(--color-text-main);
             font-family: var(--font-sans);
+            color: var(--plant-black-pure);
+            background-color: var(--plant-cream-soft);
             min-height: 100vh;
             min-height: 100dvh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 16px 14px 76px;
+            padding: 0 14px 84px;
             overflow-x: hidden;
             position: relative;
             letter-spacing: -0.01em;
-            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
         /* ==========================================================================
-           FONDO CINEMATOGRÁFICO: GRANO ANALÓGICO + HOJAS FLOTANTES VECTORIALES
+           2. PATRÓN DINÁMICO INCLINADO A 45° (MONSTERA & CAFÉ) EN DRIFT INFINITO
            ========================================================================== */
-        .stage-grain-texture {
+        .ambient-pattern-stage {
+            position: fixed;
+            inset: -40%;
+            width: 180%;
+            height: 180%;
+            z-index: 0;
+            pointer-events: none;
+            transform: rotate(-45deg);
+            /* Patrón SVG botánico de hojas y granos de café vectoriales */
+            background-image: 
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 10 C25 22 20 40 40 60 C60 40 55 22 40 10 Z M40 10 L40 60 M28 26 C35 30 38 34 40 34 M52 26 C45 30 42 34 40 34 M25 42 C33 44 38 46 40 46 M55 42 C47 44 42 46 40 46' stroke='%23485E2E' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+                url("data:image/svg+xml,%3Csvg width='70' height='70' viewBox='0 0 70 70' xmlns='http://www.w3.org/2000/svg'%3E%3Cellipse cx='35' cy='35' rx='14' ry='19' fill='none' stroke='%237D5333' stroke-width='2.2' transform='rotate(25 35 35)'/%3E%3Cpath d='M30 18 Q38 35 33 52' stroke='%237D5333' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-size: 80px 80px, 70px 70px;
+            background-position: 0 0, 115px 85px;
+            background-repeat: repeat;
+            opacity: 0.15;
+            animation: driftDiagonalBotanic 65s linear infinite;
+            will-change: background-position;
+        }
+
+        @keyframes driftDiagonalBotanic {
+            0%   { background-position: 0 0, 115px 85px; }
+            100% { background-position: 800px 0, 915px 85px; }
+        }
+
+        .ambient-light-veil {
             position: fixed;
             inset: 0;
-            pointer-events: none;
             z-index: 1;
-            opacity: 0.038;
-            mix-blend-mode: multiply;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-        }
-
-        .botanic-ambient-spotlight {
-            position: fixed;
-            top: -120px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: min(720px, 120vw);
-            height: 480px;
-            background: radial-gradient(ellipse, rgba(255, 255, 255, 0.85) 0%, rgba(245, 230, 211, 0) 70%);
-            filter: blur(50px);
             pointer-events: none;
-            z-index: 2;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(245, 239, 230, 0.72) 50%, rgba(234, 224, 205, 0.45) 100%);
         }
 
-        .hub-container {
+        /* ==========================================================================
+           3. MARQUESINA DE TAPE BOTÁNICA INFINITA
+           ========================================================================== */
+        .marquee-strip-flow {
+            width: calc(100% + 28px);
+            margin-left: -14px;
+            margin-right: -14px;
+            background: var(--plant-green-deep);
+            border-bottom: 2px solid var(--border-black);
+            color: #FFFFFF;
+            overflow: hidden;
+            padding: 9px 0;
+            display: flex;
+            white-space: nowrap;
+            position: relative;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(22, 28, 14, 0.18);
+        }
+
+        .marquee-track-unit {
+            display: inline-flex;
+            gap: 24px;
+            animation: tickerTapeFlow 26s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-track-unit span {
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .bullet-botanic {
+            color: #CDE89C;
+            font-size: 0.85rem;
+            font-style: normal;
+        }
+
+        @keyframes tickerTapeFlow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ==========================================================================
+           4. MASTER SHELL
+           ========================================================================== */
+        .master-hub-shell {
             width: 100%;
             max-width: 485px;
             display: flex;
@@ -154,215 +175,314 @@
             gap: 16px;
             z-index: 10;
             position: relative;
+            margin: 0 auto;
+            padding-top: 14px;
         }
 
         /* ==========================================================================
-           3. DOCK SELECTOR DE ATMÓSFERA
+           5. TOP INSTITUTIONAL BAR: BADGES DE ESTADO
            ========================================================================== */
-        .ambience-dock {
-            background: var(--bg-surface);
-            border: 1px solid var(--color-border);
-            border-radius: 999px;
-            height: 38px;
-            padding: 0 14px;
+        .top-institutional-bar {
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            width: 100%;
-            box-shadow: 0 2px 10px rgba(42, 51, 32, 0.04);
-            margin: 2px auto 0;
-            transition: all 0.3s ease;
+            gap: 8px;
         }
 
-        .ambience-label {
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            font-weight: 700;
+        .pill-organizer-btn {
+            background: var(--plant-white-pure);
+            border: 1.5px solid var(--border-strong);
+            border-radius: 999px;
+            padding: 6px 14px;
+            text-decoration: none;
+            color: var(--plant-black-pure);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 2px 2px 0px var(--border-strong);
+            transition: all 0.22s var(--spring);
+        }
+
+        .pill-organizer-btn:hover {
+            transform: translateY(-2px);
+            background: var(--plant-container-gold);
+        }
+
+        .organizer-icon-leaf {
+            width: 18px;
+            height: 18px;
+            display: block;
+            fill: var(--plant-green-deep);
+        }
+
+        .organizer-name-text {
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 800;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--color-botanic);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .ambience-swatches {
-            display: flex;
+        .badge-live-countdown {
+            background: #E4ECC8;
+            border: 1.5px solid var(--border-strong);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
+            color: var(--plant-dark-forest);
         }
 
-        .ambience-tab {
-            width: 20px;
-            height: 20px;
+        .beacon-core {
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
-            border: 1.5px solid rgba(0, 0, 0, 0.12);
-            outline: none;
-            cursor: pointer;
-            transition: transform 0.25s var(--spring), border-color 0.25s ease;
+            background: var(--plant-green-vibrant);
+            box-shadow: 0 0 6px var(--plant-green-vibrant);
+            animation: pulseRadio 1.8s infinite;
         }
 
-        .ambience-tab.active {
-            transform: scale(1.25);
-            border-color: var(--color-dark);
-            box-shadow: 0 0 0 2px var(--bg-surface), 0 2px 6px rgba(0, 0, 0, 0.2);
+        @keyframes pulseRadio {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.7); opacity: 0.4; }
         }
-
-        .tab-botanico { background: #586D42; }
-        .tab-espresso { background: #6D4C38; }
-        .tab-flores   { background: #755255; }
 
         /* ==========================================================================
-           4. HERO LOGO MONUMENTO CON REFLEJO ESPEJADO Y FLOTACIÓN VITAL
+           6. HERO BRAND MONUMENT (LOGO OFICIAL PNG ENCAPSULADO)
            ========================================================================== */
-        .brand-header-monument {
+        .hero-monument-card {
+            background: var(--plant-white-pure);
+            border: 2px solid var(--border-strong);
+            border-radius: 26px;
+            padding: 24px 20px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 8px 6px 2px;
-            gap: 12px;
-            position: relative;
-        }
-
-        .logo-coin-wrapper {
-            width: 135px;
-            height: 135px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #FAF4EB 60%, #EBDBC8 100%);
-            border: 3.5px solid #FFFFFF;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transform-style: preserve-3d;
-            box-shadow: 0 14px 34px -4px rgba(42, 51, 32, 0.22), 0 0 0 5px rgba(255, 255, 255, 0.7);
-            cursor: pointer;
-            padding: 12px;
-            animation: plantCoinSway 6.5s infinite ease-in-out;
-            transition: transform 0.3s ease;
-        }
-
-        .logo-coin-wrapper:hover {
-            transform: scale(1.05);
-        }
-
-        @keyframes plantCoinSway {
-            0% { transform: rotateY(0deg) translateY(0); }
-            25% { transform: rotateY(18deg) translateY(-2px); }
-            50% { transform: rotateY(0deg) translateY(0); }
-            75% { transform: rotateY(-18deg) translateY(-2px); }
-            100% { transform: rotateY(0deg) translateY(0); }
-        }
-
-        .logo-svg-main {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .brand-title-main {
-            font-family: var(--font-serif);
-            font-size: clamp(2.1rem, 7vw, 2.6rem);
-            font-weight: 900;
-            color: var(--color-botanic);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-top: 2px;
-        }
-
-        .brand-sub-badge {
-            font-family: var(--font-mono);
-            font-size: 0.74rem;
-            font-weight: 800;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--color-earth);
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* MANIFIESTO CON FRASE ROTATIVA POÉTICA */
-        .brand-manifesto-box {
-            background: var(--bg-surface);
-            border: 1.5px solid var(--color-border);
-            border-radius: 20px;
-            padding: 16px 20px;
-            box-shadow: var(--shadow-card);
-            width: 100%;
-            text-align: center;
+            box-shadow: var(--shadow-block);
             position: relative;
             overflow: hidden;
         }
 
-        .manifesto-quote {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-style: italic;
-            font-weight: 600;
-            color: var(--color-dark);
-            line-height: 1.35;
-            min-height: 48px;
+        .hero-monument-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 7px;
+            background: linear-gradient(90deg, var(--plant-green-vibrant), var(--plant-warm-gold), var(--plant-terracotta));
+        }
+
+        /* MEDALLÓN PRINCIPAL CON EL LOGO PNG SUBIDO A GITHUB */
+        .logo-coin-container {
+            width: 142px;
+            height: 142px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #FFFFFF 0%, #F8F3EA 65%, #ECE0CE 100%);
+            border: 2.5px solid var(--border-strong);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.4s ease, transform 0.4s ease;
+            position: relative;
+            margin-bottom: 8px;
+            cursor: pointer;
+            padding: 12px;
+            box-shadow: 3px 3px 0px var(--border-strong), 0 8px 24px rgba(42, 54, 27, 0.12);
+            transition: transform 0.3s var(--spring);
         }
 
-        .manifesto-subline {
-            font-size: 0.78rem;
-            color: var(--color-text-muted);
+        .logo-coin-container:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        .logo-coin-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.06));
+        }
+
+        .brand-monument-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 7vw, 2.5rem);
+            font-weight: 900;
+            color: var(--plant-dark-forest);
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin-top: 4px;
+        }
+
+        .hero-title-edition {
+            display: inline-flex;
+            align-items: center;
+            background: #E8F0D4;
+            border: 1.5px solid var(--border-strong);
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--plant-dark-forest);
             margin-top: 6px;
-            font-weight: 500;
-            line-height: 1.4;
         }
 
-        .manifesto-subline strong {
-            color: var(--color-botanic);
+        .hero-tagline-motto {
+            font-size: 0.88rem;
+            line-height: 1.45;
+            color: #435133;
+            max-width: 95%;
+            margin-top: 10px;
+            font-weight: 600;
         }
 
-        /* INSIGNIAS EN ONDA TEXTIL ARMÓNICA */
-        .pill-badges-row {
+        .hero-tagline-motto strong {
+            color: var(--plant-black-pure);
+            font-weight: 800;
+        }
+
+        .hero-badges-row {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 7px;
             flex-wrap: wrap;
-            margin-top: 2px;
+            margin-top: 14px;
         }
 
-        .pill-badge {
-            font-family: var(--font-sans);
+        .pill-micro-seal {
+            background: var(--plant-cream-soft);
+            border: 1px solid var(--border-strong);
+            border-radius: 999px;
+            padding: 5px 11px;
+            font-family: var(--font-mono);
             font-size: 0.68rem;
             font-weight: 800;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: var(--badge-bg);
-            color: var(--badge-text);
-            border: 1px solid var(--color-border);
+            color: var(--plant-black-pure);
+            letter-spacing: 0.03em;
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            box-shadow: 0 2px 8px rgba(42, 51, 32, 0.03);
-            animation: floatingBadge 5s ease-in-out infinite alternate;
         }
 
-        .pill-badge:nth-child(1) { animation-delay: 0s; }
-        .pill-badge:nth-child(2) { animation-delay: 0.7s; }
-        .pill-badge:nth-child(3) { animation-delay: 1.4s; }
-        .pill-badge:nth-child(4) { animation-delay: 2.1s; }
-
-        @keyframes floatingBadge {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
-            100% { transform: translateY(0); }
+        .pill-micro-seal svg {
+            width: 13px;
+            height: 13px;
+            fill: var(--plant-green-deep);
         }
 
         /* ==========================================================================
-           5. HERO CTA: WHATSAPP DIRECTO & PEDIDOS
+           7. VIDEO REEL CINEMATOGRÁFICO CON AUDIO SWITCH Y OVERLAY
+           ========================================================================== */
+        .reel-player-stage {
+            width: 100%;
+            height: 385px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--border-strong);
+            box-shadow: var(--shadow-block);
+            background: #000000;
+        }
+
+        .reel-video-element {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .reel-vignette {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.25) 45%, rgba(18,24,12,0.88) 100%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .reel-overlay-content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 18px 20px;
+            z-index: 3;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 12px;
+            color: #FFFFFF;
+        }
+
+        .reel-meta-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .reel-live-tag {
+            align-self: flex-start;
+            font-family: var(--font-mono);
+            font-size: 0.70rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: #D9E8BA;
+            color: #1A240E;
+            border: 1px solid var(--border-strong);
+        }
+
+        .reel-title-head {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+            color: #FFFFFF;
+        }
+
+        .reel-caption-sub {
+            font-size: 0.76rem;
+            color: #E7EDDA;
+            font-weight: 500;
+        }
+
+        .audio-circular-switch {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #E8F0D4;
+            border: 2px solid var(--border-strong);
+            color: var(--plant-black-pure);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--border-strong);
+            transition: transform 0.2s var(--spring);
+            flex-shrink: 0;
+        }
+
+        .audio-circular-switch:hover {
+            transform: scale(1.08);
+        }
+
+        .audio-circular-switch svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* ==========================================================================
+           8. CTA PRINCIPAL DIRECTO A WHATSAPP (HERO BANNER)
            ========================================================================== */
         .card-hero-whatsapp {
             display: flex;
@@ -370,15 +490,15 @@
             justify-content: space-between;
             gap: 16px;
             padding: 20px 22px;
-            background: linear-gradient(135deg, var(--color-botanic) 0%, var(--color-dark) 100%);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 22px;
+            background: linear-gradient(135deg, #3C5024 0%, #202913 100%);
+            border: 2px solid var(--border-black);
+            border-radius: 24px;
             text-decoration: none;
             color: #FFFFFF;
-            box-shadow: var(--shadow-glow);
+            box-shadow: var(--shadow-block);
             position: relative;
             overflow: hidden;
-            transition: all 0.28s var(--spring);
+            transition: all 0.26s var(--spring);
             cursor: pointer;
         }
 
@@ -387,25 +507,25 @@
             position: absolute;
             top: 0; left: -120%;
             width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.22) 50%, transparent 100%);
             transform: skewX(-25deg);
-            animation: sheenLight 5.5s infinite ease-in-out;
+            animation: sheenHeroLight 5.5s infinite ease-in-out;
         }
 
-        @keyframes sheenLight {
+        @keyframes sheenHeroLight {
             0%, 60% { left: -120%; }
             85%, 100% { left: 180%; }
         }
 
         .card-hero-whatsapp:hover {
-            transform: translateY(-3px) scale(1.015);
-            box-shadow: 0 18px 40px rgba(42, 51, 32, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 6px 6px 0px var(--border-strong);
         }
 
         .hero-wpp-info {
             display: flex;
             flex-direction: column;
-            gap: 3px;
+            gap: 4px;
             z-index: 2;
         }
 
@@ -413,30 +533,19 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
+            font-family: var(--font-mono);
             font-size: 0.68rem;
             font-weight: 800;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: #D9E8CA;
-        }
-
-        .pulse-dot {
-            width: 7px; height: 7px; border-radius: 50%;
-            background: #25D366;
-            box-shadow: 0 0 8px #25D366;
-            animation: beaconPulse 1.8s infinite;
-        }
-
-        @keyframes beaconPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.75); }
+            color: #CFE4AD;
         }
 
         .hero-title-wpp {
             font-family: var(--font-serif);
-            font-size: 1.45rem;
+            font-size: 1.55rem;
             font-weight: 800;
-            line-height: 1.15;
+            line-height: 1.1;
         }
 
         .hero-sub-wpp {
@@ -446,7 +555,7 @@
         }
 
         .hero-wpp-circle {
-            width: 50px; height: 50px;
+            width: 52px; height: 52px;
             border-radius: 50%;
             background: #25D366;
             color: #FFFFFF;
@@ -454,157 +563,192 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #FFFFFF;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s var(--spring);
             z-index: 2;
         }
 
         .card-hero-whatsapp:hover .hero-wpp-circle {
-            transform: scale(1.12) rotate(14deg);
+            transform: scale(1.12) rotate(12deg);
         }
 
         .hero-wpp-circle svg {
-            width: 26px; height: 26px; fill: #FFFFFF;
+            width: 27px; height: 27px; fill: #FFFFFF;
         }
 
         /* ==========================================================================
-           6. BENTO GRID DE EXPERIENCIAS (TAROT, COOKIES, HARINAS, WEB)
+           9. GRILLA BENTO MORFOLÓGICA CON CONTRASTES RICOS
            ========================================================================== */
-        .bento-actions-grid {
+        .morph-bento-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
-        .bento-card {
-            background: var(--bg-surface);
-            border: 1.5px solid var(--color-border);
-            border-radius: 20px;
-            padding: 16px;
-            text-decoration: none;
-            color: var(--color-text-main);
+        .bento-cell-card {
+            padding: 18px 16px;
+            border-radius: 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 124px;
-            box-shadow: var(--shadow-card);
-            transition: all 0.26s var(--spring);
-            cursor: pointer;
+            text-decoration: none;
             position: relative;
             overflow: hidden;
+            border: 2px solid var(--border-strong);
+            box-shadow: var(--shadow-block);
+            transition: all 0.25s var(--spring);
+            min-height: 148px;
+            color: var(--plant-black-pure);
+            cursor: pointer;
         }
 
-        .bento-card:hover {
+        .bento-cell-card:hover {
             transform: translateY(-3px);
-            border-color: var(--color-border-hover);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 6px 6px 0px var(--border-strong);
         }
 
-        .bento-card.full-width {
+        /* CELDA 1: COOKIES CON STICKER */
+        .cell-cookies-box {
+            background: linear-gradient(135deg, #FFFFFF 0%, #F8EFE4 100%);
+            border-color: #8C6239;
+        }
+
+        .cookie-floating-sticker {
+            position: absolute;
+            right: 8px;
+            bottom: 8px;
+            font-size: 2.8rem;
+            transform: rotate(-10deg);
+            filter: drop-shadow(2px 3px 0px rgba(64, 50, 32, 0.20));
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+
+        .cell-cookies-box:hover .cookie-floating-sticker {
+            transform: rotate(0deg) scale(1.15);
+        }
+
+        /* CELDA 2: NOCHES DE TAROT */
+        .cell-tarot-mystic {
+            background: linear-gradient(135deg, #2A2127 0%, #151216 100%);
+            border-color: #CCA048;
+            color: #FFFFFF;
+        }
+
+        .cell-tarot-mystic .cell-chip-tag { color: #E5BE6C; }
+        .cell-tarot-mystic .cell-poster-headline { color: #FFF1D2; }
+        .cell-tarot-mystic .cell-body-caption { color: #E3D4C4; }
+
+        /* CELDA 3: FULL WIDTH MENÚ SIN HARINAS */
+        .cell-full-healthy {
             grid-column: span 2;
+            background: #EFF5E4;
+            min-height: auto;
             flex-direction: row;
             align-items: center;
-            min-height: auto;
+            gap: 14px;
             padding: 18px 20px;
         }
 
-        .card-cookies-highlight {
-            background: linear-gradient(135deg, #FFFDF9 0%, #FAF0E4 100%);
-            border: 2px solid var(--color-earth);
+        /* CELDA 4 & 5: VIVERO & WEB */
+        .cell-botanic-nursery {
+            background: var(--plant-white-pure);
         }
 
-        .card-tarot-night {
-            background: linear-gradient(135deg, #2A2128 0%, #171317 100%) !important;
-            border: 2px solid #D5A859 !important;
-            color: #FFFFFF !important;
+        .cell-official-web {
+            background: var(--plant-white-pure);
         }
 
-        .card-tarot-night .bento-title { color: #FFE8BF !important; }
-        .card-tarot-night .bento-caption { color: #E0D3C1 !important; }
-        .card-tarot-night .bento-tag { color: #D5A859 !important; }
-        .card-tarot-night .bento-arrow { color: #D5A859 !important; }
-
-        .bento-top-row {
+        .cell-top-meta {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
-        .bento-tag {
+        .cell-chip-tag {
             font-family: var(--font-mono);
-            font-size: 0.65rem;
+            font-size: 0.68rem;
             font-weight: 800;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            color: var(--color-botanic);
+            color: var(--plant-green-deep);
         }
 
-        .bento-arrow {
-            font-size: 1.15rem;
-            color: var(--color-text-muted);
-            transition: transform 0.22s ease, color 0.22s ease;
+        .svg-clean-glyph {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            display: block;
         }
 
-        .bento-card:hover .bento-arrow {
-            transform: translate(3px, -3px);
-            color: var(--color-botanic);
-        }
-
-        .bento-title {
+        .cell-poster-headline {
             font-family: var(--font-serif);
-            font-size: 1.18rem;
+            font-size: 1.35rem;
             font-weight: 800;
-            line-height: 1.2;
-            color: var(--color-dark);
+            line-height: 1.15;
+            color: var(--plant-black-pure);
         }
 
-        .bento-caption {
-            font-size: 0.74rem;
-            color: var(--color-text-muted);
-            margin-top: 3px;
-            font-weight: 500;
+        .cell-body-caption {
+            font-size: 0.76rem;
+            margin-top: 4px;
             line-height: 1.35;
+            font-weight: 600;
+            color: #556245;
         }
 
         /* ==========================================================================
-           7. SECCIÓN REELS / VIDEOS EN BUCLE (STREAMING LIVIANO MP4)
+           10. SHOWCASE EN RECUADROS HOMOGÉNEOS CON MATICES ARMÓNICOS
            ========================================================================== */
-        .reels-experience-pod {
-            background: var(--bg-surface);
-            border: 1.5px solid var(--color-border);
-            border-radius: 24px;
-            padding: 18px 16px 20px;
-            box-shadow: var(--shadow-card);
+        .showcase-enclosure-white {
+            background: var(--plant-white-pure);
+            border: 2px solid var(--border-strong);
+            border-radius: 26px;
+            padding: 20px 18px 16px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
+            box-shadow: var(--shadow-block);
         }
 
-        .reels-header {
+        .showcase-enclosure-gold {
+            background: var(--plant-container-gold);
+            border: 2px solid var(--border-strong);
+            border-radius: 26px;
+            padding: 20px 18px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            box-shadow: var(--shadow-block);
+        }
+
+        .enclosure-header-row {
             display: flex;
             align-items: baseline;
             justify-content: space-between;
             padding: 0 4px;
         }
 
-        .reels-title-serif {
+        .enclosure-title-main {
             font-family: var(--font-serif);
-            font-size: 1.35rem;
+            font-size: 1.45rem;
             font-weight: 800;
-            color: var(--color-dark);
+            color: var(--plant-dark-forest);
         }
 
-        .reels-tag-sub {
+        .enclosure-badge-right {
             font-family: var(--font-mono);
             font-size: 0.68rem;
             font-weight: 800;
-            color: var(--color-botanic);
-            letter-spacing: 0.08em;
+            color: var(--plant-green-deep);
             text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
-        .reels-scroll-strip {
+        /* CARRUSEL DE REELS Y TARJETAS */
+        .carousel-inner-track {
             display: flex;
             gap: 12px;
             overflow-x: auto;
@@ -613,39 +757,40 @@
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
         }
-        .reels-scroll-strip::-webkit-scrollbar { display: none; }
+        .carousel-inner-track::-webkit-scrollbar { display: none; }
 
-        .reel-card-item {
-            flex: 0 0 135px;
-            height: 220px;
+        .reel-scroll-card {
+            flex: 0 0 148px;
+            height: 236px;
             scroll-snap-align: start;
-            border-radius: 18px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
-            background: #232B19;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            background: #1C2412;
+            border: 2px solid var(--border-strong);
+            box-shadow: 3px 3px 0px var(--border-strong);
             cursor: pointer;
             transition: transform 0.25s var(--spring);
         }
 
-        .reel-card-item:hover {
+        .reel-scroll-card:hover {
             transform: scale(1.04) translateY(-2px);
         }
 
-        .reel-card-item video {
+        .reel-scroll-card video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .reel-badge-pill {
+        .reel-scroll-tag {
             position: absolute;
             top: 8px; left: 8px;
             font-family: var(--font-mono);
-            font-size: 0.58rem;
+            font-size: 0.60rem;
             font-weight: 800;
-            background: rgba(35, 43, 25, 0.75);
+            background: rgba(22, 28, 14, 0.82);
             backdrop-filter: blur(4px);
             color: #FFFFFF;
             padding: 3px 8px;
@@ -655,12 +800,13 @@
             z-index: 2;
         }
 
-        .reel-footer-caption {
+        .reel-scroll-caption {
             position: absolute;
             bottom: 0; left: 0; right: 0;
             padding: 16px 8px 8px;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
-            font-size: 0.70rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 100%);
+            font-family: var(--font-sans);
+            font-size: 0.72rem;
             font-weight: 700;
             color: #FFFFFF;
             text-align: center;
@@ -668,56 +814,8 @@
         }
 
         /* ==========================================================================
-           8. GALERÍA FOTOGRÁFICA CON SHUFFLE ALEATORIO DINÁMICO & LIGHTBOX
+           11. GALERÍA SOCIAL CON MOTOR SHUFFLE & FILTROS
            ========================================================================== */
-        .gallery-modular-section {
-            background: var(--bg-surface);
-            border: 1.5px solid var(--color-border);
-            border-radius: 24px;
-            padding: 18px 16px 20px;
-            box-shadow: var(--shadow-card);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .gallery-top-bar {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            padding: 0 4px;
-        }
-
-        .gallery-section-title {
-            font-family: var(--font-serif);
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--color-dark);
-        }
-
-        .btn-shuffle-reload {
-            background: var(--badge-bg);
-            border: 1px solid var(--color-border);
-            color: var(--color-botanic);
-            font-family: var(--font-sans);
-            font-size: 0.70rem;
-            font-weight: 800;
-            padding: 5px 12px;
-            border-radius: 999px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-shuffle-reload:hover {
-            background: var(--color-botanic);
-            color: #FFFFFF;
-            transform: translateY(-1px);
-        }
-
-        /* FILTROS POR CATEGORÍA */
         .category-filter-tabs {
             display: flex;
             gap: 6px;
@@ -728,49 +826,71 @@
         .category-filter-tabs::-webkit-scrollbar { display: none; }
 
         .cat-tab-btn {
-            background: #F7F3EB;
-            border: 1px solid var(--color-border);
+            background: var(--plant-cream-soft);
+            border: 1.5px solid var(--border-strong);
             border-radius: 999px;
             padding: 6px 14px;
-            font-family: var(--font-sans);
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: var(--color-text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.70rem;
+            font-weight: 800;
+            color: var(--plant-dark-forest);
             white-space: nowrap;
             cursor: pointer;
-            transition: all 0.22s ease;
+            box-shadow: 2px 2px 0px var(--border-strong);
+            transition: all 0.22s var(--spring);
         }
 
         .cat-tab-btn.active, .cat-tab-btn:hover {
-            background: var(--color-botanic);
+            background: var(--plant-green-deep);
             color: #FFFFFF;
-            border-color: var(--color-botanic);
+            transform: translateY(-2px);
         }
 
-        /* GRID RESPONSIVE DE FOTOS ALEATORIAS */
+        .btn-shuffle-reload {
+            background: var(--plant-container-gold);
+            border: 1.5px solid var(--border-strong);
+            color: var(--plant-dark-forest);
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 999px;
+            cursor: pointer;
+            box-shadow: 2px 2px 0px var(--border-strong);
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-shuffle-reload:hover {
+            background: var(--plant-green-vibrant);
+            color: #FFFFFF;
+        }
+
         .gallery-cards-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 12px;
         }
 
         .gallery-photo-card {
-            background: #FDFBF7;
-            border: 1.5px solid var(--color-border);
-            border-radius: 16px;
+            background: var(--plant-white-pure);
+            border: 2px solid var(--border-strong);
+            border-radius: 18px;
             padding: 8px;
             display: flex;
             flex-direction: column;
             gap: 6px;
             cursor: pointer;
+            box-shadow: var(--shadow-block);
             transition: transform 0.25s var(--spring), box-shadow 0.25s ease;
             position: relative;
         }
 
         .gallery-photo-card:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--color-border-hover);
+            box-shadow: 6px 6px 0px var(--border-strong);
         }
 
         .photo-img-wrap {
@@ -779,13 +899,14 @@
             border-radius: 12px;
             overflow: hidden;
             background: #EAE1D3;
+            border: 1px solid var(--border-organic);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
 
-        .photo-img-wrap img {
+        .photo-img-wrap img, .photo-img-wrap video {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -800,8 +921,8 @@
             position: absolute;
             top: 6px; left: 6px;
             background: rgba(255, 255, 255, 0.94);
-            backdrop-filter: blur(4px);
-            color: var(--color-dark);
+            border: 1px solid var(--border-strong);
+            color: var(--plant-black-pure);
             font-family: var(--font-mono);
             font-size: 0.58rem;
             font-weight: 800;
@@ -809,13 +930,13 @@
             text-transform: uppercase;
             padding: 2px 7px;
             border-radius: 6px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            box-shadow: 1px 1px 0px var(--border-strong);
         }
 
         .photo-title-label {
             font-size: 0.82rem;
             font-weight: 700;
-            color: var(--color-dark);
+            color: var(--plant-black-pure);
             line-height: 1.25;
             padding: 2px 4px 0;
             white-space: nowrap;
@@ -824,67 +945,65 @@
         }
 
         /* ==========================================================================
-           9. LOCALIZACIÓN & MAPA INTERACTIVO (BANFIELD)
+           12. UBICACIÓN Y MAPA INTERACTIVO (BANFIELD)
            ========================================================================== */
-        .map-card-wrapper {
-            background: var(--bg-surface);
-            border: 1.5px solid var(--color-border);
+        .cell-wide-navigation {
+            background: var(--plant-dark-forest);
+            border: 2px solid var(--border-black);
             border-radius: 24px;
-            padding: 16px;
-            box-shadow: var(--shadow-card);
+            color: #FFFFFF;
+            padding: 20px 20px 18px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 14px;
+            box-shadow: var(--shadow-block);
         }
 
-        .map-head-row {
+        .location-header-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
-        .map-brand-wrap {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .map-icon-leaf {
-            width: 34px; height: 34px;
-            border-radius: 50%;
-            background: var(--bg-surface-tint);
-            color: var(--color-botanic);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .map-icon-leaf svg { width: 18px; height: 18px; stroke-width: 2.2; }
-
-        .map-titles-box {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.25;
-        }
-
-        .map-spot-name {
-            font-family: var(--font-serif);
-            font-size: 1.22rem;
+        .location-badge-pill {
+            background: rgba(206, 232, 160, 0.20);
+            border: 1px solid #CEE8A0;
+            color: #CEE8A0;
+            padding: 3px 10px;
+            border-radius: 999px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
             font-weight: 800;
-            color: var(--color-dark);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
         }
 
-        .map-address-sub {
-            font-size: 0.74rem;
-            color: var(--color-text-muted);
+        .location-venue-title {
+            font-family: var(--font-serif);
+            font-size: 1.7rem;
+            font-weight: 800;
+            line-height: 1.1;
+            color: #FFFFFF;
+        }
+
+        .location-address-desc {
+            font-size: 0.82rem;
+            color: #E2E8D5;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .location-address-desc strong {
+            color: #FFFFFF;
+            font-weight: 700;
         }
 
         .map-frame-box {
             width: 100%;
-            height: 225px;
+            height: 220px;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--color-border);
+            border: 2px solid #3F4D28;
             background: #E8E3DA;
         }
 
@@ -898,21 +1017,23 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: var(--bg-surface-tint);
+            background: rgba(255, 255, 255, 0.10);
+            border: 1px solid rgba(255, 255, 255, 0.20);
             border-radius: 12px;
             padding: 10px 14px;
-            font-size: 0.74rem;
-            color: var(--color-text-main);
-            font-weight: 600;
+            font-size: 0.76rem;
+            color: #FFFFFF;
+            font-family: var(--font-mono);
+            font-weight: 700;
         }
 
         /* ==========================================================================
-           10. CAJÓN MODAL INTERACTIVO: LAS 16 COOKIES ARTESANALES
+           13. CAJÓN MODAL INTERACTIVO: 16 COOKIES
            ========================================================================== */
         .modal-cookies-drawer {
             position: fixed;
             inset: 0;
-            background: rgba(35, 43, 25, 0.85);
+            background: rgba(22, 28, 14, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 99999;
@@ -932,14 +1053,14 @@
 
         .cookies-dialog-card {
             background: #FFFDF9;
-            border: 2px solid var(--color-botanic);
+            border: 2px solid var(--border-strong);
             border-radius: 26px;
             max-width: 440px;
             width: 100%;
             max-height: 90vh;
             overflow-y: auto;
-            padding: 22px 20px 24px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            padding: 24px 20px 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4), 6px 6px 0px var(--border-strong);
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -957,9 +1078,9 @@
             top: 14px; right: 14px;
             width: 34px; height: 34px;
             border-radius: 50%;
-            background: #F2E8DC;
-            border: none;
-            color: var(--color-dark);
+            background: #EFE4D6;
+            border: 1.5px solid var(--border-strong);
+            color: var(--plant-black-pure);
             font-size: 16px;
             font-weight: 800;
             cursor: pointer;
@@ -970,20 +1091,20 @@
         }
 
         .btn-close-drawer:hover {
-            background: var(--color-botanic);
+            background: var(--plant-green-deep);
             color: #FFFFFF;
         }
 
         .drawer-heading-box h3 {
             font-family: var(--font-serif);
-            font-size: 1.55rem;
-            color: var(--color-botanic);
+            font-size: 1.6rem;
+            color: var(--plant-dark-forest);
             font-weight: 800;
         }
 
         .drawer-heading-box p {
             font-size: 0.82rem;
-            color: var(--color-text-muted);
+            color: #5D6B4E;
             margin-top: 4px;
         }
 
@@ -996,20 +1117,16 @@
 
         .cookie-flavour-item {
             background: #F7EFE5;
-            border: 1px solid rgba(83, 106, 54, 0.18);
+            border: 1.5px solid var(--border-strong);
             border-radius: 12px;
             padding: 9px 12px;
             font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--color-dark);
+            font-weight: 800;
+            color: var(--plant-black-pure);
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-
-        .cookie-flavour-item::before {
-            content: '🍪';
-            font-size: 0.85rem;
+            box-shadow: 2px 2px 0px var(--border-strong);
         }
 
         .btn-order-cookies-wpp {
@@ -1024,18 +1141,19 @@
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+            border: 1.5px solid var(--border-strong);
+            box-shadow: 3px 3px 0px var(--border-strong);
             display: block;
             margin-top: 6px;
         }
 
         /* ==========================================================================
-           11. LIGHTBOX MODAL FULLSCREEN
+           14. LIGHTBOX FOTOGRÁFICO FULLSCREEN
            ========================================================================== */
         .lightbox-modal {
             position: fixed;
             inset: 0;
-            background: rgba(22, 28, 16, 0.95);
+            background: rgba(18, 24, 12, 0.95);
             backdrop-filter: blur(14px);
             z-index: 999999;
             display: flex;
@@ -1058,9 +1176,10 @@
             max-width: 500px;
             width: 100%;
             background: #FFFFFF;
+            border: 2px solid var(--border-strong);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 6px 6px 0px var(--border-strong);
             display: flex;
             flex-direction: column;
         }
@@ -1071,21 +1190,21 @@
             justify-content: space-between;
             padding: 12px 18px;
             background: #FAF7F2;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1.5px solid var(--border-organic);
         }
 
         .lightbox-counter {
             font-family: var(--font-mono);
             font-size: 0.78rem;
             font-weight: 800;
-            color: var(--color-botanic);
+            color: var(--plant-green-deep);
         }
 
         .lightbox-img-stage {
             width: 100%;
             height: 60vh;
             max-height: 480px;
-            background: #141A10;
+            background: #11170A;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1093,7 +1212,7 @@
             padding: 10px;
         }
 
-        .lightbox-img-stage img {
+        .lightbox-img-stage img, .lightbox-img-stage video {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
@@ -1104,36 +1223,36 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 40px; height: 40px;
+            width: 42px; height: 42px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.92);
-            border: 2px solid var(--color-botanic);
-            color: var(--color-botanic);
-            font-size: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--border-strong);
+            color: var(--plant-black-pure);
+            font-size: 22px;
             font-weight: 900;
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 3px 3px 0px var(--border-strong);
         }
 
         .lb-arrow-btn.prev { left: 12px; }
         .lb-arrow-btn.next { right: 12px; }
 
         .lightbox-caption-bar {
-            padding: 12px 18px;
+            padding: 14px 18px;
             background: #FFFFFF;
-            font-family: var(--font-sans);
-            font-size: 0.88rem;
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
             font-weight: 800;
-            color: var(--color-dark);
+            color: var(--plant-black-pure);
             text-align: center;
         }
 
         /* ==========================================================================
-           12. REDES SOCIALES & BOTÓN FLOTANTE
+           15. REDES SOCIALES & BOTÓN FLOTANTE
            ========================================================================== */
         .social-network-bar {
             display: flex;
@@ -1147,27 +1266,29 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 44px; height: 44px;
+            width: 46px; height: 46px;
             border-radius: 50%;
-            background: var(--bg-surface);
-            border: 1px solid var(--color-border);
-            color: var(--color-botanic);
+            background: var(--plant-white-pure);
+            border: 2px solid var(--border-strong);
+            color: var(--plant-black-pure);
             text-decoration: none;
-            box-shadow: 0 3px 10px rgba(42, 51, 32, 0.05);
+            box-shadow: 2px 2px 0px var(--border-strong);
             transition: all 0.22s var(--spring);
         }
 
         .social-circle-btn:hover {
-            transform: translateY(-3px) scale(1.08);
-            background: var(--color-botanic);
+            transform: translateY(-3px);
+            background: var(--plant-green-deep);
             color: #FFFFFF;
+            box-shadow: 4px 4px 0px var(--border-strong);
         }
 
-        .social-circle-btn svg { width: 19px; height: 19px; fill: currentColor; }
+        .social-circle-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
-        .floating-whatsapp-hub {
+        .floating-pin-portal {
             position: fixed;
-            bottom: 22px; right: 18px;
+            bottom: 20px;
+            right: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -1175,153 +1296,163 @@
             text-decoration: none;
         }
 
-        .floating-wpp-pill {
-            background: #FFFFFF;
-            color: #128C7E;
-            font-family: var(--font-sans);
+        .floating-pill-caption {
+            background: var(--plant-black-pure);
+            color: #FFFFFF;
+            font-family: var(--font-mono);
             font-size: 0.74rem;
             font-weight: 800;
-            padding: 6px 13px;
+            padding: 8px 14px;
             border-radius: 999px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(37, 211, 102, 0.35);
-            letter-spacing: 0.04em;
+            border: 1.5px solid var(--border-strong);
+            box-shadow: 3px 3px 0px var(--border-strong);
+            letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
-        .floating-wpp-button {
-            width: 52px; height: 52px;
+        .floating-circle-glyph {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background-color: #25D366;
+            background: #25D366;
+            border: 2px solid var(--border-strong);
             color: #FFFFFF;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.38);
+            box-shadow: 3px 3px 0px var(--border-strong);
             transition: transform 0.25s var(--spring);
         }
 
-        .floating-whatsapp-hub:hover .floating-wpp-button {
+        .floating-pin-portal:hover .floating-circle-glyph {
             transform: scale(1.1) translateY(-2px);
         }
 
-        .floating-wpp-button svg { width: 28px; height: 28px; fill: #FFFFFF; }
+        .floating-circle-glyph svg {
+            width: 26px;
+            height: 26px;
+            fill: #FFFFFF;
+        }
 
         /* ==========================================================================
-           13. COLOFÓN / FOOTER NOBLE
+           16. FOOTER INSTITUCIONAL
            ========================================================================== */
-        .hub-colophon {
-            margin-top: 14px;
-            padding-top: 22px;
-            border-top: 1.5px dashed var(--color-border);
+        .footer-institutional-monument {
+            margin-top: 10px;
+            padding-top: 24px;
+            border-top: 2px dashed var(--border-strong);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 6px;
+            gap: 12px;
         }
 
-        .colophon-signature {
+        .footer-brand-title {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--color-botanic);
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: var(--plant-dark-forest);
         }
 
-        .colophon-desc {
-            font-size: 0.74rem;
-            color: var(--color-text-muted);
-            max-width: 360px;
-            line-height: 1.45;
-            font-weight: 500;
+        .footer-address-caption {
+            font-size: 0.78rem;
+            color: #526140;
+            line-height: 1.5;
+            font-weight: 600;
+            max-width: 380px;
         }
 
-        .colophon-copy {
+        .footer-legal-copy {
             font-family: var(--font-mono);
             font-size: 0.65rem;
-            color: var(--color-text-muted);
-            letter-spacing: 0.06em;
+            color: var(--plant-dark-forest);
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-top: 4px;
-            opacity: 0.8;
         }
     </style>
 </head>
-<body data-mood="botanico">
+<body>
 
-    <!-- TEXTURA DE GRANO ANALÓGICO -->
-    <div class="stage-grain-texture" aria-hidden="true"></div>
+    <!-- 1. PATRÓN DINÁMICO INCLINADO A 45° CON HOJAS & CAFÉ -->
+    <div class="ambient-pattern-stage" aria-hidden="true"></div>
+    <div class="ambient-light-veil" aria-hidden="true"></div>
 
-    <!-- HALO DE LUZ SOLAR -->
-    <div class="botanic-ambient-spotlight" aria-hidden="true"></div>
+    <!-- 2. MARQUESINA DE TAPE BOTÁNICA INFINITA -->
+    <div class="marquee-strip-flow" aria-label="Novedades de La Planterería">
+        <div class="marquee-track-unit">
+            <span>🌿 LA PLANTERERÍA BANFIELD <i class="bullet-botanic">★</i></span>
+            <span>CAFÉ DE ESPECIALIDAD <i class="bullet-botanic">★</i></span>
+            <span>16 VARIEDADES DE COOKIES HORNEADAS <i class="bullet-botanic">★</i></span>
+            <span>VIVERO BOUTIQUE &amp; DECO <i class="bullet-botanic">★</i></span>
+            <span>MENÚ SIN HARINAS &amp; PROTEICO <i class="bullet-botanic">★</i></span>
+            <span>NOCHES DE TAROT &amp; CAFÉ <i class="bullet-botanic">★</i></span>
+            <span>PUEYRREDÓN 1291 ESQ. CHACABUCO <i class="bullet-botanic">★</i></span>
+            <span>🌿 LA PLANTERERÍA BANFIELD <i class="bullet-botanic">★</i></span>
+            <span>CAFÉ DE ESPECIALIDAD <i class="bullet-botanic">★</i></span>
+            <span>16 VARIEDADES DE COOKIES HORNEADAS <i class="bullet-botanic">★</i></span>
+        </div>
+    </div>
 
-    <!-- CONTENEDOR CENTRAL DEL HUB -->
-    <main class="hub-container">
+    <!-- 3. SHELL PRINCIPAL MOBILE -->
+    <main class="master-hub-shell">
 
-        <!-- ==========================================================================
-             1. DOCK SELECTOR DE ATMÓSFERA
-             ========================================================================== -->
-        <nav class="ambience-dock" aria-label="Selector de Atmósfera">
-            <span class="ambience-label" id="ambienceLabel">
-                🌿 Rincón Botánico
-            </span>
-            <div class="ambience-swatches">
-                <button class="ambience-tab tab-botanico active" data-target="botanico" title="Rincón Botánico" onclick="setAmbience('botanico', '🌿 Rincón Botánico')"></button>
-                <button class="ambience-tab tab-espresso" data-target="espresso" title="Café de Especialidad" onclick="setAmbience('espresso', '☕ Café de Especialidad')"></button>
-                <button class="ambience-tab tab-flores" data-target="flores" title="Tarde de Flores" onclick="setAmbience('flores', '🌸 Tarde de Flores')"></button>
-            </div>
-        </nav>
-
-        <!-- ==========================================================================
-             2. MONUMENTO DE MARCA: LOGO OFICIAL VECTORIAL SVG (INTACTO)
-             ========================================================================== -->
-        <header class="brand-header-monument">
-            <div class="logo-coin-wrapper" onclick="triggerHaptic()" title="La Planterería">
-                <!-- SVG OFICIAL VECTORIAL CONVERTIDO DE LA MARCA -->
-                <svg id="Layer_1" data-name="Layer 1" class="logo-svg-main" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1224.42 1218.15">
-                  <defs>
-                    <style>
-                      .cls-1 { fill: none; stroke-width: 0px; }
-                      .cls-2 { fill: var(--color-monstera); stroke-width: 0px; transition: fill 0.3s ease; }
-                      .cls-3 { fill: #fff; stroke-width: 0px; }
-                    </style>
-                  </defs>
-                  <circle class="cls-3" cx="612.21" cy="609.07" r="407.17"/>
-                  <g>
-                    <rect class="cls-1" x="304.19" y="252.48" width="612" height="612"/>
-                    <path class="cls-2" d="M0,609.6c1.77-116.86,30.01-226.56,91.59-326.44,63.35-102.76,151.28-178.2,261.09-228.08,61.79-28.07,126.69-44.98,194.15-51.94,54.18-5.59,108.2-3.66,161.88,5.32,118.42,19.81,223.95,67.69,314.89,146.49,57.26,49.61,102.64,108.54,136.01,176.63,34.55,70.5,54.99,145.02,62.17,223.07,8.37,91-3.06,179.6-35.25,265.23-22.73,60.45-55.44,115.14-97.53,164.16-47.54,55.37-101.65,103.26-163.48,142.14-72.96,45.88-152.16,74.81-237.66,86.5-44.97,6.15-90,7.26-135.1,2.56-69.13-7.2-134.75-26.63-197.14-57.26-65.26-32.04-122.66-74.93-174.7-125.37-48.23-46.75-89.21-98.94-119.49-159.13-25.17-50.04-42.44-102.73-51.96-157.94C2.58,675.55.12,646.88,0,609.6ZM735.7,767.48c-5.05,1.06-8.79,1.7-12.45,2.63-27.24,6.96-54.75,11.81-83.02,10.18-14.21-.82-28.37-2.6-40.81-10.15-3.86-2.34-7.22-6.36-9.43-10.38-2.53-4.6.12-7.77,5.43-7.33,4.81.39,9.59,1.13,14.35,1.92,36.11,5.95,72.3,7.59,108.37.29,42.18-8.54,70.57-32.8,82.56-74.85.92-3.23,1.26-6.63,2.03-10.83-3.92,1.35-6.76,2.26-9.54,3.29-33.94,12.59-68.19,24.08-104.29,28.83-15.42,2.03-30.87,3.07-46.24-.46-7.43-1.71-14.35-4.55-19.23-10.79-4.32-5.53-3.08-9.08,3.79-9.75,9.44-.92,18.93-1.59,28.41-1.68,34.28-.34,68.24-3.14,101.39-12.5,19.53-5.51,37.56-13.72,51.13-29.57,14.13-16.5,20.97-36.13,24.18-57.21,1.03-6.76,1.2-13.65,1.84-21.39-1.87,1.04-2.47,1.3-2.99,1.67-25.41,18-53.49,30.38-83.13,39.48-23.43,7.19-47.26,11.47-71.89,9.59-3.81-.29-7.57-1.19-11.36-1.8-.12-.67-.25-1.34-.37-2.01,5.46-3.34,10.58-7.53,16.44-9.85,15.44-6.13,31.05-11.94,46.89-16.98,22.53-7.17,45.38-13.28,66.37-24.63,39.14-21.17,48.86-59.2,30.49-106.62-3.83,4.27-7.09,8.24-10.69,11.88-23.69,23.9-51.77,40.24-84.71,47.43-8.47,1.85-17.52,1.91-26.23,1.45-6.45-.34-7.88-5.35-2.96-9.5,4.65-3.92,9.79-7.87,15.4-9.91,12.64-4.61,25.75-7.89,38.58-12.01,10.91-3.5,22.17-6.42,32.42-11.36,14.44-6.95,24.81-18.26,29.35-34.22,4.61-16.2,1.71-31.75-5.84-45.99-12.39-23.36-26-46.08-39.22-69-.75-1.3-2.4-2.31-3.86-2.92-24.08-10.18-49.05-13.93-74.82-8.81-20.77,4.13-38.2,13.97-48.57,33.38-9.33,17.48-9.37,36.17-5.87,55.06,4.19,22.63,14.1,42.9,26.31,62.19,1.16,1.84,2.02,3.88,3.01,5.82-.32.31-.65.63-.97.94-1.76-.69-3.61-1.23-5.28-2.1-10.9-5.68-19.33-14.2-26.31-24.08-17.26-24.42-24.61-51.76-23.31-81.54.17-3.96.02-7.94.02-11.97-.71-.06-1.2-.21-1.65-.12-1.14.23-2.27.53-3.38.87-11.12,3.36-21.2,8.73-30.59,15.55-19.29,14.03-28.25,32.67-25.72,56.59,1.9,17.93,8.9,34.07,17.52,49.6,11.05,19.9,25.02,37.73,39.54,55.17,4.69,5.63,9.31,11.34,13.63,17.25,3.6,4.92,1.89,9.91-4.08,10.86-3.89.62-8.79.51-12.01-1.37-6.5-3.82-12.83-8.43-18.05-13.84-13.93-14.45-23.33-31.97-31.48-50.12-12-26.73-22.01-54.03-21.94-83.94,0-.74-.38-1.48-.9-3.33-8.29,6.71-16.36,12.6-23.67,19.3-11.05,10.13-20.16,21.79-24.25,36.61-5.38,19.49-2.35,38.38,4.83,56.75,10.8,27.65,28.09,51.34,46.22,74.47,8.73,11.14,17.6,22.19,26.24,33.4,1.42,1.85,2.04,4.32,3.02,6.51-.45.33-.91.66-1.36,1-2.09-.85-4.27-1.54-6.27-2.57-13.98-7.2-25.95-17-35.72-29.23-26.53-33.18-44.01-70.88-54.84-111.79-.49-1.84-1.01-3.67-1.77-6.42-14.1,15.23-25.29,30.94-31.29,49.93-3.38,10.68-3.96,21.58-2.42,32.62,3.31,23.75,14.06,44.27,27.95,63.32,13.02,17.86,28.33,33.59,45.16,47.91,2.02,1.71,4.59,4.59,4.39,6.69-.35,3.63-1.98,7.66-4.34,10.45-2.6,3.06-6.9,1.89-9.59-.42-8.3-7.12-17.16-13.88-24.15-22.18-20.9-24.85-37.25-52.72-51.62-81.78-1.37-2.78-2.8-5.52-4.88-9.62-2.51,6.92-4.77,12.42-6.53,18.08-9.02,28.96-9.13,58.46-4.46,88.06,4.4,27.9,12.6,54.52,29.32,77.82,8.61,12,19.36,21.49,33.18,27.21,16.44,6.81,32.63,4.51,48.77-1.13,1.58-.55,3.2-1,6.13-1.92-31.37,50.84-69.09,94.49-109.8,135.89,13.67,1.54,26.08-1.58,36.1-9.66,9.22-7.44,18.1-16.06,24.73-25.79,13.39-19.66,25.17-40.42,37.59-60.74,5.79-9.48,11.52-19,17.72-29.22,2.7,5.12,4.79,9.25,7.03,13.28,17.49,31.46,44.26,46.83,80.2,44.7,38.03-2.25,70.11-18.36,97.43-44.44,9.95-9.49,17.93-20.46,24.67-34.08Z"/>
-                  </g>
+        <!-- BARRA INSTITUCIONAL SUPERIOR -->
+        <header class="top-institutional-bar">
+            <a href="https://www.instagram.com/laplantereria/" target="_blank" rel="noopener noreferrer" class="pill-organizer-btn" onclick="playTap()">
+                <svg class="organizer-icon-leaf" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 3.7 2.01 6.94 5 8.65V22l4-2 4 2v-1.35c2.99-1.71 5-4.95 5-8.65 0-5.52-4.48-10-10-10zm0 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
                 </svg>
-            </div>
+                <span class="organizer-name-text">@laplantereria</span>
+            </a>
 
-            <h1 class="brand-title-main">La Planterería</h1>
-            <div class="brand-sub-badge">Café · Pastelería · Plantas & Deco</div>
-
-            <!-- MANIFIESTO CON FRASE DINÁMICA -->
-            <div class="brand-manifesto-box">
-                <p class="manifesto-quote" id="rotatingQuote">
-                    "Hay lugares que no solo se visitan, se disfrutan con todos los sentidos."
-                </p>
-                <p class="manifesto-subline">
-                    Un oasis verde en Banfield donde conviven el café de especialidad, la pastelería hecha en casa y la frescura de la naturaleza.
-                </p>
-            </div>
-
-            <!-- INSIGNIAS FLOTANTES -->
-            <div class="pill-badges-row">
-                <span class="pill-badge">☕ Café de Especialidad</span>
-                <span class="pill-badge">🍰 Pastelería Propia</span>
-                <span class="pill-badge">🌿 Vivero Boutique</span>
-                <span class="pill-badge">🥑 Menú Sin Harinas</span>
+            <div class="badge-live-countdown">
+                <span class="beacon-core"></span>
+                <span>Abierto hoy en Banfield</span>
             </div>
         </header>
 
-        <!-- ==========================================================================
-             3. ACCIÓN PRINCIPAL: WHATSAPP DIRECTO
-             ========================================================================== -->
-        <a href="https://wa.me/5491162501098?text=%C2%A1Hola%20La%20Planterer%C3%ADa!%20%F0%9F%8C%BF%20Quisiera%20hacer%20un%20pedido%20o%20consultar%20por%20sus%20mesas%20y%20pasteler%C3%ADa." target="_blank" rel="noopener noreferrer" class="card-hero-whatsapp" onclick="triggerHaptic()">
+        <!-- HERO MONUMENTO DE MARCA (LOGO PNG OFICIAL) -->
+        <section class="hero-monument-card">
+            <div class="logo-coin-container" onclick="playTap()" title="La Planterería">
+                <!-- LOGO PNG SUBIDO AL REPOSITORIO -->
+                <img src="logo planter.png" alt="La Planterería - Logo Oficial" onerror="this.onerror=null; this.src='logo%20planter.png';">
+            </div>
+
+            <h1 class="brand-monument-title">La Planterería</h1>
+
+            <div class="hero-title-edition">
+                Café · Pastelería · Plantas &amp; Deco
+            </div>
+
+            <p class="hero-tagline-motto">
+                Un oasis verde en Banfield donde conviven el <strong>café de especialidad</strong>, la pastelería hecha en casa y la frescura de la naturaleza.
+            </p>
+
+            <div class="hero-badges-row">
+                <span class="pill-micro-seal">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    Banfield
+                </span>
+                <span class="pill-micro-seal">
+                    <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+                    Especialidad
+                </span>
+                <span class="pill-micro-seal">
+                    <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-17.9A8.003 8.003 0 0 0 4 12a8 8 0 0 0 7 7.93V4.1z"/></svg>
+                    16 Cookies
+                </span>
+                <span class="pill-micro-seal">
+                    <svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+                    Noches Tarot
+                </span>
+            </div>
+        </section>
+
+        <!-- CTA HERO DIRECTO A WHATSAPP -->
+        <a href="https://wa.me/5491162501098?text=%C2%A1Hola%20La%20Planterer%C3%ADa!%20%F0%9F%8C%BF%20Quisiera%20hacer%20un%20pedido%20o%20consultar%20por%20sus%20mesas%20y%20pasteler%C3%ADa." target="_blank" rel="noopener noreferrer" class="card-hero-whatsapp" onclick="playTap()">
             <div class="hero-wpp-info">
-                <span class="hero-live-badge"><i class="pulse-dot"></i> Banfield · Atención Inmediata</span>
+                <span class="hero-live-badge"><i class="beacon-core"></i> Banfield · Atención Inmediata</span>
                 <h2 class="hero-title-wpp">Pedidos &amp; Consultas</h2>
                 <span class="hero-sub-wpp">Escribinos directo al 11 6250-1098 por WhatsApp</span>
             </div>
@@ -1330,128 +1461,138 @@
             </div>
         </a>
 
-        <!-- ==========================================================================
-             4. BENTO GRID DE EXPERIENCIAS
-             ========================================================================== -->
-        <section class="bento-actions-grid">
+        <!-- VIDEO REEL CINEMATOGRÁFICO EN VIVO -->
+        <section class="reel-player-stage">
+            <video id="plantereriaReelPlayer" class="reel-video-element" autoplay loop muted playsinline>
+                <source src="Local/IMG_7115 2.mp4" type="video/mp4">
+            </video>
+            <div class="reel-vignette"></div>
 
-            <!-- 1. CAJÓN DE 16 COOKIES ARTESANALES (ABRE MODAL) -->
-            <div class="bento-card card-cookies-highlight" onclick="openCookiesDrawer()">
-                <div class="bento-top-row">
-                    <span class="bento-tag">16 Variedades</span>
-                    <span class="bento-arrow">🍪</span>
+            <div class="reel-overlay-content">
+                <div class="reel-meta-left">
+                    <span class="reel-live-tag">El Lugar</span>
+                    <h2 class="reel-title-head">Vivir La Planterería</h2>
+                    <span class="reel-caption-sub">Patio, salón &amp; vivero bajo la luz del sol</span>
                 </div>
-                <div>
-                    <h3 class="bento-title">Nuestras Cookies</h3>
-                    <p class="bento-caption">Artesanales y horneadas todos los días. Tocá para ver la lista completa.</p>
-                </div>
+
+                <button class="audio-circular-switch" id="btnSoundToggle" onclick="toggleReelAudio()" title="Activar sonido">
+                    <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                </button>
             </div>
+        </section>
 
-            <!-- 2. NOCHES DE TAROT & BORRA DEL CAFÉ -->
-            <a href="https://wa.me/5491162501098?text=%C2%A1Hola!%20Quisiera%20reservar%20mi%20lugar%20para%20la%20Noche%20de%20Tarot%20y%20Borra%20del%20Caf%C3%A9%20%E2%9C%A8" target="_blank" rel="noopener noreferrer" class="bento-card card-tarot-night" onclick="triggerHaptic()">
-                <div class="bento-top-row">
-                    <span class="bento-tag">Experiencia</span>
-                    <span class="bento-arrow">↗</span>
+        <!-- GRILLA BENTO MORFOLÓGICA CON ARQUITECTURA LIMPIA -->
+        <section class="morph-bento-grid">
+
+            <!-- 1. CAJÓN DE 16 COOKIES ARTESANALES -->
+            <article class="bento-cell-card cell-cookies-box" onclick="openCookiesDrawer()">
+                <div class="cell-top-meta">
+                    <span class="cell-chip-tag" style="color: #8C6239;">16 Variedades</span>
+                    <svg class="svg-clean-glyph" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
                 </div>
                 <div>
-                    <h3 class="bento-title">Tarot &amp; Café</h3>
-                    <p class="bento-caption">Lectura de cartas y borra del café entre plantas. Cupos limitados.</p>
+                    <h3 class="cell-poster-headline">Nuestras Cookies</h3>
+                    <p class="cell-body-caption">Horneadas todos los días. Tocá para ver la lista completa.</p>
+                </div>
+                <span class="cookie-floating-sticker">🍪</span>
+            </article>
+
+            <!-- 2. NOCHES DE TAROT -->
+            <a href="https://wa.me/5491162501098?text=%C2%A1Hola!%20Quisiera%20reservar%20mi%20lugar%20para%20la%20Noche%20de%20Tarot%20y%20Borra%20del%20Caf%C3%A9%20%E2%9C%A8" target="_blank" rel="noopener noreferrer" class="bento-cell-card cell-tarot-mystic" onclick="playTap()">
+                <div class="cell-top-meta">
+                    <span class="cell-chip-tag">Experiencia</span>
+                    <svg class="svg-clean-glyph" viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42 5.43 5.43H5v2z"/></svg>
+                </div>
+                <div>
+                    <h3 class="cell-poster-headline">Tarot &amp; Café</h3>
+                    <p class="cell-body-caption">Lectura de cartas y borra del café entre plantas. Cupos limitados.</p>
                 </div>
             </a>
 
-            <!-- 3. MENÚ SIN HARINAS (FULL WIDTH) -->
-            <div class="bento-card full-width" onclick="filterGalleryByCategory('Menu sin harinas')">
+            <!-- 3. FULL WIDTH MENÚ SIN HARINAS -->
+            <article class="bento-cell-card cell-full-healthy" onclick="filterGalleryByCategory('Menu sin harinas')">
                 <div style="flex:1;">
-                    <div class="bento-top-row" style="margin-bottom: 2px;">
-                        <span class="bento-tag">Opciones Saludables &amp; Keto</span>
+                    <div class="cell-top-meta" style="margin-bottom: 2px;">
+                        <span class="cell-chip-tag">Keto · Proteico · Healthy</span>
                     </div>
-                    <h3 class="bento-title">Menú Sin Harinas</h3>
-                    <p class="bento-caption">Tostones de queso y huevo, palta hass, desayunos proteicos y pastelería baja en carbohidratos.</p>
+                    <h3 class="cell-poster-headline">Menú Sin Harinas</h3>
+                    <p class="cell-body-caption">Tostones de queso y huevo, palta hass y pastelería baja en carbohidratos.</p>
                 </div>
-                <span class="bento-arrow">🥑</span>
-            </div>
+                <span style="font-size:2.2rem; filter: drop-shadow(1px 2px 0px rgba(0,0,0,0.15));">🥑</span>
+            </article>
 
-            <!-- 4. VIVERO BOUTIQUE & DECO -->
-            <div class="bento-card" onclick="filterGalleryByCategory('Algunas Plantas')">
-                <div class="bento-top-row">
-                    <span class="bento-tag">Verde Vivo</span>
-                    <span class="bento-arrow">🌿</span>
+            <!-- 4. VIVERO BOUTIQUE -->
+            <article class="bento-cell-card cell-botanic-nursery" onclick="filterGalleryByCategory('Algunas Plantas')">
+                <div class="cell-top-meta">
+                    <span class="cell-chip-tag">Verde Vivo</span>
+                    <span style="font-size: 1.1rem;">🌿</span>
                 </div>
                 <div>
-                    <h3 class="bento-title">Vivero &amp; Deco</h3>
-                    <p class="bento-caption">Jazmines, suculentas, kalanchoes y macetas para tu casa.</p>
+                    <h3 class="cell-poster-headline">Vivero &amp; Deco</h3>
+                    <p class="cell-body-caption">Macetas, suculentas, jazmines y plantas para tu hogar.</p>
                 </div>
-            </div>
+            </article>
 
-            <!-- 5. SITIO WEB OFICIAL -->
-            <a href="https://laplantereria.com.ar/" target="_blank" rel="noopener noreferrer" class="bento-card" onclick="triggerHaptic()">
-                <div class="bento-top-row">
-                    <span class="bento-tag">Web Oficial</span>
-                    <span class="bento-arrow">↗</span>
+            <!-- 5. WEB OFICIAL -->
+            <a href="https://laplantereria.com.ar/" target="_blank" rel="noopener noreferrer" class="bento-cell-card cell-official-web" onclick="playTap()">
+                <div class="cell-top-meta">
+                    <span class="cell-chip-tag">Web Oficial</span>
+                    <svg class="svg-clean-glyph" viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42 5.43 5.43H5v2z"/></svg>
                 </div>
                 <div>
-                    <h3 class="bento-title">laplantereria.com.ar</h3>
-                    <p class="bento-caption">Conocé nuestra historia, propuesta y novedades.</p>
+                    <h3 class="cell-poster-headline">laplantereria.com.ar</h3>
+                    <p class="cell-body-caption">Conocé nuestra carta y la historia detrás de la casa.</p>
                 </div>
             </a>
 
         </section>
 
-        <!-- ==========================================================================
-             5. REELS / MOMENTOS EN VIDEO (STREAMING MP4 LIVIANO)
-             ========================================================================== -->
-        <section class="reels-experience-pod">
-            <div class="reels-header">
-                <h3 class="reels-title-serif">Vivir La Planterería</h3>
-                <span class="reels-tag-sub">Momentos en Video</span>
+        <!-- REELS Y MOMENTOS EN VIDEO -->
+        <section class="showcase-enclosure-white">
+            <div class="enclosure-header-row">
+                <span class="enclosure-title-main">Momentos en Video</span>
+                <span class="enclosure-badge-right">Streaming</span>
             </div>
 
-            <div class="reels-scroll-strip">
+            <div class="carousel-inner-track">
 
-                <!-- VIDEO 1: LOCAL -->
-                <div class="reel-card-item" onclick="openVideoModal('Local/IMG_7115 2.mp4', 'El Salón & Vivero')">
-                    <span class="reel-badge-pill">El Lugar</span>
-                    <video src="Local/IMG_7115 2.mp4" autoplay loop muted playsinline preload="metadata"></video>
-                    <div class="reel-footer-caption">Patio &amp; Plantas</div>
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Pasteleria/IMG_5753.mp4', 'Pastelería Artesanal Recién Horneada', true)">
+                    <span class="reel-scroll-tag">Pastelería</span>
+                    <video src="Pasteleria/IMG_5753.mp4" autoplay loop muted playsinline></video>
+                    <div class="reel-scroll-caption">Torta Vasca</div>
                 </div>
 
-                <!-- VIDEO 2: PASTELERÍA -->
-                <div class="reel-card-item" onclick="openVideoModal('Pasteleria/IMG_5753.mp4', 'Pastelería Artesanal')">
-                    <span class="reel-badge-pill">Pastelería</span>
-                    <video src="Pasteleria/IMG_5753.mp4" autoplay loop muted playsinline preload="metadata"></video>
-                    <div class="reel-footer-caption">Torta Vasca</div>
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Algunas Plantas/IMG_5770 2.mp4', 'Vivero Boutique &amp; Suculentas', true)">
+                    <span class="reel-scroll-tag">Plantas</span>
+                    <video src="Algunas Plantas/IMG_5770 2.mp4" autoplay loop muted playsinline></video>
+                    <div class="reel-scroll-caption">Rincón Verde</div>
                 </div>
 
-                <!-- VIDEO 3: ALGUNAS PLANTAS -->
-                <div class="reel-card-item" onclick="openVideoModal('Algunas Plantas/IMG_5770 2.mp4', 'Vivero Boutique')">
-                    <span class="reel-badge-pill">Vivero</span>
-                    <video src="Algunas Plantas/IMG_5770 2.mp4" autoplay loop muted playsinline preload="metadata"></video>
-                    <div class="reel-footer-caption">Rincón Verde</div>
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Licuados de proteinas/IMG_7473.mp4', 'Licuados Proteicos Naturales', true)">
+                    <span class="reel-scroll-tag">Bebidas</span>
+                    <video src="Licuados de proteinas/IMG_7473.mp4" autoplay loop muted playsinline></video>
+                    <div class="reel-scroll-caption">Proteína &amp; Fruta</div>
                 </div>
 
-                <!-- VIDEO 4: LICUADOS PROTEICOS -->
-                <div class="reel-card-item" onclick="openVideoModal('Licuados de proteinas/IMG_7473.mp4', 'Licuados Proteicos')">
-                    <span class="reel-badge-pill">Bebidas</span>
-                    <video src="Licuados de proteinas/IMG_7473.mp4" autoplay loop muted playsinline preload="metadata"></video>
-                    <div class="reel-footer-caption">Proteína &amp; Fruta</div>
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Menu sin harinas/IMG_3363.mp4', 'Tostón Saludable de Huevo y Queso', true)">
+                    <span class="reel-scroll-tag">Healthy</span>
+                    <video src="Menu sin harinas/IMG_3363.mp4" autoplay loop muted playsinline></video>
+                    <div class="reel-scroll-caption">Sin Harinas</div>
                 </div>
 
-                <!-- VIDEO 5: SIN HARINAS -->
-                <div class="reel-card-item" onclick="openVideoModal('Menu sin harinas/IMG_3363.mp4', 'Menú Sin Harinas')">
-                    <span class="reel-badge-pill">Healthy</span>
-                    <video src="Menu sin harinas/IMG_3363.mp4" autoplay loop muted playsinline preload="metadata"></video>
-                    <div class="reel-footer-caption">Sin Harinas</div>
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Local/IMG_7115 2.mp4', 'El Salón y el Patio', true)">
+                    <span class="reel-scroll-tag">El Local</span>
+                    <video src="Local/IMG_7115 2.mp4" autoplay loop muted playsinline></video>
+                    <div class="reel-footer-caption">Patio &amp; Mesas</div>
                 </div>
 
             </div>
         </section>
 
-        <!-- ==========================================================================
-             6. GALERÍA DE FOTOS CON MOTOR SHUFFLE ALEATORIO
-             ========================================================================== -->
-        <section class="gallery-modular-section">
-            <div class="gallery-top-bar">
-                <h3 class="gallery-section-title">Nuestra Carta &amp; Espacios</h3>
+        <!-- GALERÍA DINÁMICA SHUFFLE & FILTROS -->
+        <section class="showcase-enclosure-gold">
+            <div class="enclosure-header-row">
+                <span class="enclosure-title-main">Carta &amp; Espacios</span>
                 <button class="btn-shuffle-reload" onclick="reshuffleGallery()">
                     <span>Mezclar fotos 🔀</span>
                 </button>
@@ -1468,26 +1609,27 @@
                 <button class="cat-tab-btn" onclick="filterGalleryByCategory('Local')">🏡 El Local</button>
             </div>
 
-            <!-- CONTENEDOR GRID DINÁMICO SHUFFLE -->
+            <!-- CONTENEDOR GRID DINÁMICO -->
             <div class="gallery-cards-grid" id="galleryGridContainer">
-                <!-- Se inyecta dinámicamente con JS aleatorizado -->
+                <!-- Inyectado por JS aleatorizado -->
             </div>
         </section>
 
-        <!-- ==========================================================================
-             7. ENCUÉNTRANOS: MAPA LEAFLET INTERACTIVO BANFIELD (PUEYRREDÓN 1291)
-             ========================================================================== -->
-        <article class="map-card-wrapper">
-            <div class="map-head-row">
-                <div class="map-brand-wrap">
-                    <div class="map-icon-leaf">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                    </div>
-                    <div class="map-titles-box">
-                        <span class="map-spot-name">Vení a visitarnos</span>
-                        <span class="map-address-sub">Pueyrredón 1291 (esq. Chacabuco), Banfield</span>
-                    </div>
-                </div>
+        <!-- UBICACIÓN Y MAPA INTERACTIVO (BANFIELD) -->
+        <article class="cell-wide-navigation">
+            <div class="location-header-row">
+                <span class="location-badge-pill">Punto de Encuentro</span>
+                <a href="https://maps.google.com/?q=Pueyrredon+1291+Banfield" target="_blank" rel="noopener noreferrer" style="color:#CEE8A0; font-family:var(--font-mono); font-size:0.72rem; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; gap:4px; text-transform:uppercase;">
+                    Abrir Mapa
+                    <svg class="svg-clean-glyph" viewBox="0 0 24 24"><path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42 5.43 5.43H5v2z"/></svg>
+                </a>
+            </div>
+
+            <div>
+                <h3 class="location-venue-title">Pueyrredón 1291</h3>
+                <p class="location-address-desc">
+                    Esquina <strong>Chacabuco</strong>, Banfield, Provincia de Buenos Aires.
+                </p>
             </div>
 
             <div class="map-frame-box">
@@ -1495,75 +1637,71 @@
             </div>
 
             <div class="map-hours-pill-strip">
-                <span>⏰ Lun a Sáb: 8 a 20 hs</span>
-                <span>🌿 Dom: 15 a 20 hs</span>
+                <span>⏰ LUN A SÁB: 8 A 20 HS</span>
+                <span>🌿 DOM: 15 A 20 HS</span>
             </div>
         </article>
 
-        <!-- ==========================================================================
-             8. REDES SOCIALES
-             ========================================================================== -->
+        <!-- REDES SOCIALES -->
         <nav class="social-network-bar" aria-label="Canales de Contacto">
-            <a href="https://www.instagram.com/laplantereria/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram">
+            <a href="https://www.instagram.com/laplantereria/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram" onclick="playTap()">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://wa.me/5491162501098" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="WhatsApp">
+            <a href="https://wa.me/5491162501098" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="WhatsApp" onclick="playTap()">
                 <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
             </a>
-            <a href="tel:1162501098" class="social-circle-btn" aria-label="Teléfono">
+            <a href="tel:1162501098" class="social-circle-btn" aria-label="Llamar por Teléfono" onclick="playTap()">
                 <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
         </nav>
 
-        <!-- ==========================================================================
-             9. FOOTER NOBLE
-             ========================================================================== -->
-        <footer class="hub-colophon">
-            <div class="colophon-signature">La Planterería</div>
-            <p class="colophon-desc">
-                Pueyrredón 1291, Chacabuco, Banfield, Provincia de Buenos Aires.<br>
+        <!-- FOOTER INSTITUCIONAL -->
+        <footer class="footer-institutional-monument">
+            <h4 class="footer-brand-title">La Planterería</h4>
+            <p class="footer-address-caption">
+                Pueyrredón 1291, Banfield, Provincia de Buenos Aires.<br>
                 Café de especialidad, pastelería artesanal, plantas y deco.
             </p>
-            <p class="colophon-copy">© 2026 LA PLANTERERÍA · TU LUGAR FAVORITO</p>
+            <p class="footer-legal-copy">
+                © 2026 LA PLANTERERÍA · TU LUGAR FAVORITO
+            </p>
         </footer>
 
     </main>
 
-    <!-- BOTÓN FLOTANTE CON WHATSAPP EXPLÍCITO -->
-    <a href="https://wa.me/5491162501098" class="floating-whatsapp-hub" target="_blank" rel="noopener noreferrer" onclick="triggerHaptic()">
-        <span class="floating-wpp-pill">WhatsApp</span>
-        <div class="floating-wpp-button">
+    <!-- BOTÓN FLOTANTE CÓMO LLEGAR / WHATSAPP -->
+    <a href="https://wa.me/5491162501098" class="floating-pin-portal" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" onclick="playTap()">
+        <span class="floating-pill-caption">WhatsApp</span>
+        <div class="floating-circle-glyph">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
         </div>
     </a>
 
-    <!-- ==========================================================================
-         MODAL 1: CAJÓN CON LAS 16 COOKIES ARTESANALES
-         ========================================================================== -->
+    <!-- CAJÓN MODAL INTERACTIVO: 16 COOKIES -->
     <div class="modal-cookies-drawer" id="cookiesDrawer" onclick="closeCookiesDrawer(event)">
         <div class="cookies-dialog-card" onclick="event.stopPropagation()">
             <button class="btn-close-drawer" onclick="closeCookiesDrawer(event)">✕</button>
             <div class="drawer-heading-box">
                 <h3>🍪 Nuestras 16 Cookies</h3>
-                <p>Elaboradas a mano en nuestro obrador con manteca pura y chocolate de primera.</p>
+                <p>Elaboradas en nuestro obrador con manteca pura e ingredientes nobles.</p>
             </div>
             <div class="cookies-badges-catalog">
-                <div class="cookie-flavour-item">Clásica</div>
-                <div class="cookie-flavour-item">Clásica c/ nuez</div>
-                <div class="cookie-flavour-item">Red velvet</div>
-                <div class="cookie-flavour-item">Frambuesa &amp; Blanco</div>
-                <div class="cookie-flavour-item">Pistacho</div>
-                <div class="cookie-flavour-item">Nutella</div>
-                <div class="cookie-flavour-item">Limón</div>
-                <div class="cookie-flavour-item">Triple Choco</div>
-                <div class="cookie-flavour-item">Oreo</div>
-                <div class="cookie-flavour-item">Rocklets</div>
-                <div class="cookie-flavour-item">Cadbury</div>
-                <div class="cookie-flavour-item">Caramelo Salado</div>
-                <div class="cookie-flavour-item">Canela</div>
-                <div class="cookie-flavour-item">Coco &amp; DDL</div>
-                <div class="cookie-flavour-item">Vainilla</div>
-                <div class="cookie-flavour-item">Café</div>
+                <div class="cookie-flavour-item">🍪 Clásica</div>
+                <div class="cookie-flavour-item">🍪 Clásica c/ nuez</div>
+                <div class="cookie-flavour-item">🍪 Red velvet</div>
+                <div class="cookie-flavour-item">🍪 Frambuesa &amp; Blanco</div>
+                <div class="cookie-flavour-item">🍪 Pistacho</div>
+                <div class="cookie-flavour-item">🍪 Nutella</div>
+                <div class="cookie-flavour-item">🍪 Limón</div>
+                <div class="cookie-flavour-item">🍪 Triple Choco</div>
+                <div class="cookie-flavour-item">🍪 Oreo</div>
+                <div class="cookie-flavour-item">🍪 Rocklets</div>
+                <div class="cookie-flavour-item">🍪 Cadbury</div>
+                <div class="cookie-flavour-item">🍪 Caramelo Salado</div>
+                <div class="cookie-flavour-item">🍪 Canela</div>
+                <div class="cookie-flavour-item">🍪 Coco &amp; DDL</div>
+                <div class="cookie-flavour-item">🍪 Vainilla</div>
+                <div class="cookie-flavour-item">🍪 Café</div>
             </div>
             <a href="https://wa.me/5491162501098?text=%C2%A1Hola!%20Quisiera%20encargar%20cookies%20artesanales%20%F0%9F%8D%AA" target="_blank" rel="noopener noreferrer" class="btn-order-cookies-wpp">
                 Pedir Cookies por WhatsApp
@@ -1571,9 +1709,7 @@
         </div>
     </div>
 
-    <!-- ==========================================================================
-         MODAL 2: LIGHTBOX FOTOGRÁFICO FULLSCREEN CON NAVEGACIÓN Y SWIPE
-         ========================================================================== -->
+    <!-- LIGHTBOX FOTOGRÁFICO CON SWIPE Y TECLADO -->
     <div class="lightbox-modal" id="galleryLightbox" onclick="closeLightbox(event)">
         <div class="lightbox-box" onclick="event.stopPropagation()">
             <div class="lightbox-header">
@@ -1582,46 +1718,40 @@
             </div>
             <div class="lightbox-img-stage" id="lbStage">
                 <button class="lb-arrow-btn prev" onclick="navLightbox(-1)" aria-label="Anterior">‹</button>
-                <img id="lbMainImg" src="" alt="La Planterería">
+                <div id="lbMediaContainer" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                    <img id="lbMainImg" src="" alt="La Planterería">
+                </div>
                 <button class="lb-arrow-btn next" onclick="navLightbox(1)" aria-label="Siguiente">›</button>
             </div>
             <div class="lightbox-caption-bar" id="lbCaption">La Planterería Banfield</div>
         </div>
     </div>
 
-    <!-- ==========================================================================
-         CONTROLADORES JS: SHUFFLE ALEATORIO, MAPA LEAFLET, REELS & HÁPTICA
-         ========================================================================== -->
+    <!-- CONTROLADORES JAVASCRIPT -->
     <script>
-        // 1. DATASET DE FOTOS Y VIDEOS CATEGORIZADOS EN TUS CARPETAS
+        // 1. DATASET DE FOTOS Y VIDEOS BASADO EN TUS CARPETAS REALES
         const masterCatalog = [
-            // Pastelería
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Torta Cheesecake de Pistachos", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Torta Vasca Quemada", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Pastelería Recién Salida", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Cheesecake de Pistachos", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Torta Vasca Horneada", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Horneado del Día", cat: "Pastelería" },
             
-            // Desayunos y Meriendas
             { folder: "Desayunos y meriendas", file: "IMG_5729.webp", title: "Café de Especialidad & Torta", cat: "Desayunos" },
-            { folder: "Desayunos y meriendas", file: "IMG_5732.webp", title: "Merienda en el Jardín", cat: "Desayunos" },
+            { folder: "Desayunos y meriendas", file: "IMG_5732.webp", title: "Mesa en el Jardín", cat: "Desayunos" },
             
-            // Menú Sin Harinas (Keto / Healthy)
-            { folder: "Menu sin harinas", file: "IMG_3363.mp4", isVideo: true, title: "Tostón de Huevo & Palta", cat: "Sin Harinas" },
+            { folder: "Menu sin harinas", file: "IMG_3363.mp4", isVideo: true, title: "Tostón de Huevo & Queso", cat: "Sin Harinas" },
             { folder: "Menu sin harinas", file: "IMG_5732.webp", title: "Opciones Libres de Harina", cat: "Sin Harinas" },
             
-            // Algunas Plantas (Vivero)
-            { folder: "Algunas Plantas", file: "IMG_5770 2.mp4", isVideo: true, title: "Jardín & Suculentas", cat: "Plantas" },
+            { folder: "Algunas Plantas", file: "IMG_5770 2.mp4", isVideo: true, title: "Vivero & Suculentas", cat: "Plantas" },
             { folder: "Algunas Plantas", file: "IMG_5771 2.mp4", isVideo: true, title: "Kalanchoes & Florales", cat: "Plantas" },
             { folder: "Algunas Plantas", file: "IMG_5775 2.mp4", isVideo: true, title: "Macetas & Deco Verde", cat: "Plantas" },
             
-            // Local
-            { folder: "Local", file: "IMG_7115 2.mp4", isVideo: true, title: "Rincón con Plantas Colgantes", cat: "El Local" },
-            { folder: "Local", file: "IMG_5729.webp", title: "Mesas de Madera & Patio", cat: "El Local" },
+            { folder: "Local", file: "IMG_7115 2.mp4", isVideo: true, title: "Patio con Plantas Colgantes", cat: "El Local" },
+            { folder: "Local", file: "IMG_5729.webp", title: "Mesas & Ambiente", cat: "El Local" },
 
-            // Licuados de Proteínas
             { folder: "Licuados de proteinas", file: "IMG_7473.mp4", isVideo: true, title: "Smoothie Proteico Natural", cat: "Licuados" }
         ];
 
-        // FUNCIÓN SHUFFLE (ALGORITMO FISHER-YATES)
+        // FUNCIÓN SHUFFLE (FISHER-YATES)
         function shuffle(array) {
             let m = array.length, t, i;
             let copy = [...array];
@@ -1646,7 +1776,6 @@
                 ? [...masterCatalog] 
                 : masterCatalog.filter(item => item.folder === currentFilter);
 
-            // APLICAR MEZCLA ALEATORIA PARA QUE FOTOS PARECIDAS NUNCA QUEDEN PEGADAS
             renderedItems = shuffle(filtered);
             container.innerHTML = '';
 
@@ -1673,12 +1802,12 @@
         }
 
         function reshuffleGallery() {
-            triggerHaptic();
+            playTap();
             renderGallery();
         }
 
         function filterGalleryByCategory(categoryFolder) {
-            triggerHaptic();
+            playTap();
             currentFilter = categoryFolder;
 
             document.querySelectorAll('.cat-tab-btn').forEach(btn => {
@@ -1688,17 +1817,39 @@
             renderGallery();
         }
 
-        // ==========================================================================
-        // 2. LIGHTBOX CON NAVEGACIÓN Y TOUCH SWIPE
-        // ==========================================================================
+        // 2. REPRODUCTOR DE VIDEO: SWITCH DE AUDIO
+        function toggleReelAudio() {
+            playTap();
+            const video = document.getElementById('plantereriaReelPlayer');
+            const btn = document.getElementById('btnSoundToggle');
+            if (!video || !btn) return;
+
+            if (video.muted) {
+                video.muted = false;
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM19 12c0 3.17-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM3 9v6h4l5 5V4L7 9H3z"/></svg>';
+            } else {
+                video.muted = true;
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
+            }
+        }
+
+        // 3. LIGHTBOX INTERACTIVO
         const lbModal = document.getElementById('galleryLightbox');
-        const lbImg = document.getElementById('lbMainImg');
         const lbCounter = document.getElementById('lbCounter');
         const lbCaption = document.getElementById('lbCaption');
+        const lbMediaContainer = document.getElementById('lbMediaContainer');
 
         function openLightbox(index) {
-            triggerHaptic();
+            playTap();
             currentLbIndex = index;
+            updateLightbox();
+            lbModal.classList.add('active');
+        }
+
+        function openLightboxFromDirect(path, title, isVideo) {
+            playTap();
+            renderedItems = [{ folder: '', file: path, title: title, cat: 'Destacado', isVideo: isVideo }];
+            currentLbIndex = 0;
             updateLightbox();
             lbModal.classList.add('active');
         }
@@ -1706,25 +1857,31 @@
         function closeLightbox(e) {
             if (e && e.stopPropagation) e.stopPropagation();
             lbModal.classList.remove('active');
+            lbMediaContainer.innerHTML = '';
         }
 
         function updateLightbox() {
             if (!renderedItems[currentLbIndex]) return;
             const item = renderedItems[currentLbIndex];
-            const path = `${encodeURIComponent(item.folder)}/${encodeURIComponent(item.file)}`;
+            const path = item.folder ? `${encodeURIComponent(item.folder)}/${encodeURIComponent(item.file)}` : item.file;
 
-            lbImg.src = path;
             lbCounter.innerText = `${currentLbIndex + 1} / ${renderedItems.length}`;
             lbCaption.innerText = `${item.title} · ${item.cat}`;
+
+            if (item.isVideo) {
+                lbMediaContainer.innerHTML = `<video src="${path}" controls autoplay loop playsinline style="max-width:100%;max-height:100%;border-radius:14px;"></video>`;
+            } else {
+                lbMediaContainer.innerHTML = `<img src="${path}" alt="${item.title}" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:14px;">`;
+            }
         }
 
         function navLightbox(dir) {
-            triggerHaptic();
+            playTap();
             currentLbIndex = (currentLbIndex + dir + renderedItems.length) % renderedItems.length;
             updateLightbox();
         }
 
-        // SWIPE TÁCTIL EN LIGHTBOX
+        // TOUCH SWIPE PARA EL LIGHTBOX
         let touchStartX = 0;
         const lbStage = document.getElementById('lbStage');
         lbStage.addEventListener('touchstart', e => {
@@ -1739,7 +1896,6 @@
             }
         });
 
-        // TECLADO: FLECHAS Y ESCAPE
         window.addEventListener('keydown', (e) => {
             if (lbModal.classList.contains('active')) {
                 if (e.key === 'ArrowLeft') navLightbox(-1);
@@ -1748,11 +1904,9 @@
             }
         });
 
-        // ==========================================================================
-        // 3. CAJÓN MODAL DE 16 COOKIES
-        // ==========================================================================
+        // 4. CAJÓN DE 16 COOKIES
         function openCookiesDrawer() {
-            triggerHaptic();
+            playTap();
             document.getElementById('cookiesDrawer').classList.add('active');
         }
 
@@ -1761,14 +1915,11 @@
             document.getElementById('cookiesDrawer').classList.remove('active');
         }
 
-        // ==========================================================================
-        // 4. MAPA LEAFLET INTERACTIVO: BANFIELD (PUEYRREDÓN 1291)
-        // ==========================================================================
+        // 5. MAPA LEAFLET INTERACTIVO: BANFIELD (PUEYRREDÓN 1291)
         let mapInstance = null;
         function initPlantereriaMap() {
             if (mapInstance !== null) return;
 
-            // Coordenadas exactas: Pueyrredón 1291 (esq. Chacabuco), Banfield
             const lat = -34.7460;
             const lng = -58.3965;
 
@@ -1781,7 +1932,6 @@
                 touchZoom: true
             });
 
-            // Capa Esri World Street Map HD oficial (libre de restricciones y nítida)
             L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
                 attribution: 'Tiles &copy; Esri',
                 maxZoom: 19
@@ -1789,61 +1939,35 @@
 
             const customPin = L.divIcon({
                 className: 'custom-map-pin',
-                html: `<div style="background:#536A36; color:#fff; padding:6px 14px; border-radius:16px; font-weight:800; font-size:12px; font-family:'Plus Jakarta Sans',sans-serif; box-shadow:0 4px 16px rgba(0,0,0,0.28); border:2px solid #fff; white-space:nowrap; display:flex; align-items:center; gap:6px;">🌿 La Planterería</div>`,
+                html: `<div style="background:#485E2E; color:#fff; padding:6px 14px; border-radius:16px; font-weight:800; font-size:12px; font-family:'Plus Jakarta Sans',sans-serif; box-shadow:0 4px 16px rgba(0,0,0,0.28); border:2px solid #fff; white-space:nowrap; display:flex; align-items:center; gap:6px;">🌿 La Planterería</div>`,
                 iconSize: [120, 32],
                 iconAnchor: [60, 16]
             });
 
             L.marker([lat, lng], { icon: customPin }).addTo(mapInstance)
-                .bindPopup("<b style='font-family:serif;font-size:14px;color:#536A36;'>La Planterería</b><br>Pueyrredón 1291, Banfield")
+                .bindPopup("<b style='font-family:serif;font-size:14px;color:#485E2E;'>La Planterería</b><br>Pueyrredón 1291, Banfield")
                 .openPopup();
         }
 
-        // ==========================================================================
-        // 5. FRASES ROTATIVAS DEL MANIFIESTO
-        // ==========================================================================
-        const brandPhrases = [
-            "Hay lugares que no solo se visitan, se disfrutan con todos los sentidos.",
-            "Café, plantas y ese ratito de desconexión que tanto necesitabas.",
-            "Un pequeño oasis donde el café sabe todavía más rico.",
-            "Entre aromas de café y rincones llenos de vida.",
-            "Un lugar donde el tiempo parece pasar un poquito más lento."
-        ];
-
-        let quoteIndex = 0;
-        function rotateBrandQuote() {
-            const quoteEl = document.getElementById('rotatingQuote');
-            if (!quoteEl) return;
-            quoteIndex = (quoteIndex + 1) % brandPhrases.length;
-            quoteEl.style.opacity = '0';
-            quoteEl.style.transform = 'translateY(4px)';
-            setTimeout(() => {
-                quoteEl.innerText = `"${brandPhrases[quoteIndex]}"`;
-                quoteEl.style.opacity = '1';
-                quoteEl.style.transform = 'translateY(0)';
-            }, 350);
-        }
-        setInterval(rotateBrandQuote, 5200);
-
-        // ==========================================================================
-        // 6. SELECTOR DE ATMÓSFERAS & HÁPTICA
-        // ==========================================================================
-        function setAmbience(moodKey, displayName) {
-            triggerHaptic();
-            document.body.setAttribute('data-mood', moodKey);
-
-            const label = document.getElementById('ambienceLabel');
-            if (label) label.innerText = displayName;
-
-            document.querySelectorAll('.ambience-tab').forEach(tab => {
-                tab.classList.toggle('active', tab.getAttribute('data-target') === moodKey);
-            });
-        }
-
-        function triggerHaptic() {
+        // 6. HÁPTICA & FÍSICA MAGNÉTICA
+        function playTap() {
             if ('vibrate' in navigator) {
                 try { navigator.vibrate(8); } catch(e) {}
             }
+        }
+
+        if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+            document.querySelectorAll('.bento-cell-card, .pill-organizer-btn, .card-hero-whatsapp').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    card.style.transform = `translate(${x * 0.02}px, ${y * 0.02 - 3}px)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
         }
 
         // INICIALIZACIÓN
