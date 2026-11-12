@@ -380,7 +380,7 @@
         }
 
         /* ==========================================================================
-           7. VIDEO REEL CINEMATOGRÁFICO (HARDWARE OPTIMIZADO)
+           7. VIDEO REEL CINEMATOGRÁFICO
            ========================================================================== */
         .reel-player-stage {
             width: 100%;
@@ -579,7 +579,7 @@
         }
 
         /* ==========================================================================
-           9. GRILLA BENTO MORFOLÓGICA CON BLINDAJE CONTRA DESBORDES
+           9. GRILLA BENTO MORFOLÓGICA
            ========================================================================== */
         .morph-bento-grid {
             display: grid;
@@ -1480,7 +1480,7 @@
             </div>
         </a>
 
-        <!-- VIDEO REEL EN VIVO (CON SMART VIEWPORT OBSERVER) -->
+        <!-- VIDEO REEL EN VIVO (SMART VIEWPORT CON PRELOAD METADATA) -->
         <section class="reel-player-stage">
             <video id="plantereriaReelPlayer" class="reel-video-element" loop muted playsinline preload="metadata">
                 <source src="Local/IMG_7115 2.mp4" type="video/mp4">
@@ -1552,7 +1552,7 @@
                 </div>
             </article>
 
-            <!-- 5. WEB OFICIAL (CON PROTECCIÓN CONTRA OVERFLOW) -->
+            <!-- 5. WEB OFICIAL -->
             <a href="https://laplantereria.com.ar/" target="_blank" rel="noopener noreferrer" class="bento-cell-card cell-official-web" onclick="playTap()">
                 <div class="cell-top-meta">
                     <span class="cell-chip-tag">Web Oficial</span>
@@ -1628,9 +1628,9 @@
                 <button class="cat-tab-btn" onclick="filterGalleryByCategory('Local')">🏡 El Local</button>
             </div>
 
-            <!-- CONTENEDOR GRID DINÁMICO REESTRUCTURADO -->
+            <!-- CONTENEDOR GRID DINÁMICO -->
             <div class="gallery-cards-grid" id="galleryGridContainer">
-                <!-- Renderizado optimizado con WASM, Worker y Smart Observer -->
+                <!-- Inyectado sin duplicaciones por el motor de renderizado -->
             </div>
         </section>
 
@@ -1749,53 +1749,52 @@
     <!-- CONTROLADORES JAVASCRIPT: SMART OBSERVER + WORKER + WEBASSEMBLY -->
     <script>
         // ==========================================================================
-        // 1. DATASET CURADO (3 FOTOS Y 1 VIDEO POR CATEGORÍA + TÍTULOS GENERALES)
+        // 1. DATASET CURADO REAL (3 FOTOS Y 1 VIDEO POR CARPETA REAL DE GITHUB)
         // ==========================================================================
         const VERIFIED_FALLBACK_IMAGES = [
             "Pasteleria/IMG_5732.webp",
-            "Pasteleria/IMG_5729.webp",
+            "Local/IMG_7107 3.webp",
             "Algunas Plantas/IMG_5781.webp"
         ];
 
         const masterCatalog = [
-            // 1. PASTELERÍA (3 fotos + 1 video)
+            // 1. PASTELERÍA (3 fotos + 1 video de la carpeta Pasteleria/)
             { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Pastelería Artesanal", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Horneados del Día", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5714.webp", title: "Horneados del Día", cat: "Pastelería" },
             { folder: "Pasteleria", file: "IMG_5729.webp", title: "Delicias de la Casa", cat: "Pastelería" },
             { folder: "Pasteleria", file: "IMG_5732.webp", title: "Dulces Momentos", cat: "Pastelería" },
             
-            // 2. DESAYUNOS Y MERIENDAS (3 fotos + 1 video)
-            { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Momento Cafetero", cat: "Desayunos" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Café de Especialidad", cat: "Desayunos" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Desayunos & Meriendas", cat: "Desayunos" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Pausa & Café", cat: "Desayunos" },
+            // 2. DESAYUNOS Y MERIENDAS (4 fotos de la carpeta Desayunos y meriendas/)
+            { folder: "Desayunos y meriendas", file: "IMG_7127 2.webp", title: "Café de Especialidad", cat: "Desayunos" },
+            { folder: "Desayunos y meriendas", file: "IMG_7130 2.webp", title: "Desayunos & Meriendas", cat: "Desayunos" },
+            { folder: "Desayunos y meriendas", file: "IMG_7414 5.webp", title: "Momento Cafetero", cat: "Desayunos" },
+            { folder: "Desayunos y meriendas", file: "IMG_7424.webp", title: "Pausa & Café", cat: "Desayunos" },
             
-            // 3. ALGUNAS PLANTAS (3 fotos + 1 video)
+            // 3. ALGUNAS PLANTAS (3 fotos + 1 video de Algunas Plantas/)
             { folder: "Algunas Plantas", file: "IMG_5770 2.mp4", isVideo: true, title: "Vivero Boutique", cat: "Plantas" },
             { folder: "Algunas Plantas", file: "IMG_5781.webp", title: "Rincón Verde", cat: "Plantas" },
             { folder: "Algunas Plantas", file: "IMG_5782.webp", title: "Botánica & Deco", cat: "Plantas" },
             { folder: "Algunas Plantas", file: "IMG_5783.webp", title: "Naturaleza Viva", cat: "Plantas" },
             
-            // 4. MENÚ SIN HARINAS (3 fotos + 1 video)
+            // 4. MENÚ SIN HARINAS (3 fotos + 1 video de Menu sin harinas/)
             { folder: "Menu sin harinas", file: "IMG_3363.mp4", isVideo: true, title: "Propuestas Ligeras", cat: "Sin Harinas" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Opciones Saludables", cat: "Sin Harinas" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Menú Sin Harinas", cat: "Sin Harinas" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Nutrición Consciente", cat: "Sin Harinas" },
+            { folder: "Menu sin harinas", file: "IMG_3356.webp", title: "Menú Sin Harinas", cat: "Sin Harinas" },
+            { folder: "Menu sin harinas", file: "IMG_3386 2.webp", title: "Opciones Saludables", cat: "Sin Harinas" },
+            { folder: "Menu sin harinas", file: "IMG_5700.webp", title: "Nutrición Consciente", cat: "Sin Harinas" },
             
-            // 5. LICUADOS DE PROTEÍNAS (3 fotos + 1 video)
+            // 5. LICUADOS DE PROTEÍNAS (2 fotos + 1 video de Licuados de proteinas/)
             { folder: "Licuados de proteinas", file: "IMG_7473.mp4", isVideo: true, title: "Batidos Proteicos", cat: "Licuados" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Energía Natural", cat: "Licuados" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Smoothies & Fruta", cat: "Licuados" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Frescura & Proteína", cat: "Licuados" },
+            { folder: "Licuados de proteinas", file: "IMG_7470 2.webp", title: "Energía Natural", cat: "Licuados" },
+            { folder: "Licuados de proteinas", file: "IMG_7471.webp", title: "Nutrición & Fruta", cat: "Licuados" },
 
-            // 6. EL LOCAL (3 fotos + 1 video)
+            // 6. EL LOCAL (3 fotos + 1 video de Local/)
             { folder: "Local", file: "IMG_7115 2.mp4", isVideo: true, title: "Patio & Salón", cat: "El Local" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Nuestros Espacios", cat: "El Local" },
-            { folder: "Algunas Plantas", file: "IMG_5779 2.webp", title: "El Jardín", cat: "El Local" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "La Casa en Banfield", cat: "El Local" }
+            { folder: "Local", file: "IMG_7107 3.webp", title: "Nuestros Espacios", cat: "El Local" },
+            { folder: "Local", file: "IMG_7108 4.webp", title: "El Jardín", cat: "El Local" },
+            { folder: "Local", file: "IMG_7109.webp", title: "La Casa en Banfield", cat: "El Local" }
         ];
 
-        // GESTOR DE FALLBACK AUTOMÁTICO (IMPIDE CUALQUIER IMAGEN ROTA)
+        // GESTOR DE FALLBACK AUTOMÁTICO
         function handleMediaFallback(imgElement) {
             const currentSrc = imgElement.src;
             const fallback = VERIFIED_FALLBACK_IMAGES.find(src => !currentSrc.includes(src)) || VERIFIED_FALLBACK_IMAGES[0];
@@ -1804,7 +1803,7 @@
         }
 
         // ==========================================================================
-        // 2. MOTOR SMART VIEWPORT: INTERSECTION OBSERVER (SOLO 1 VIDEO ACTIVO)
+        // 2. MOTOR SMART VIEWPORT: INTERSECTION OBSERVER
         // ==========================================================================
         let smartVideoObserver = null;
 
@@ -1830,7 +1829,6 @@
                 threshold: [0, 0.25, 0.5]
             });
 
-            // Conectar el observador a todos los videos de la página
             document.querySelectorAll('video').forEach(video => {
                 video.preload = "metadata";
                 smartVideoObserver.observe(video);
@@ -1838,7 +1836,7 @@
         }
 
         // ==========================================================================
-        // 3. MOTOR WEB WORKER INTEGRADO (PRECARGA EN SEGUNDO PLANO MULTI-HILO)
+        // 3. MOTOR WEB WORKER INTEGRADO
         // ==========================================================================
         let bgWorker = null;
         try {
@@ -1856,12 +1854,11 @@
         }
 
         // ==========================================================================
-        // 4. MOTOR WEBASSEMBLY (WASM) PARA CÓMPUTO ARITMÉTICO DE MEZCLA
+        // 4. MOTOR WEBASSEMBLY (WASM) PARA CÓMPUTO DE MEZCLA
         // ==========================================================================
         let wasmRandomGen = null;
         (async function initWasmModule() {
             try {
-                // Bytecode nativo WASM mínimo de 64 bytes para generación aritmética en CPU
                 const wasmBytes = new Uint8Array([
                     0x00, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00,
                     0x01, 0x06, 0x01, 0x60, 0x01, 0x7f, 0x01, 0x7f,
@@ -1877,7 +1874,6 @@
             }
         })();
 
-        // FUNCIÓN SHUFFLE ACELERADA POR WASM
         function shuffle(array) {
             let m = array.length, t, i;
             let copy = [...array];
@@ -1908,9 +1904,19 @@
                 ? [...masterCatalog] 
                 : masterCatalog.filter(item => item.folder === currentFilter || item.cat.toLowerCase().includes(currentFilter.toLowerCase()));
 
-            renderedItems = shuffle(filtered);
-            container.innerHTML = '';
+            // Mezclar usando WASM
+            let shuffled = shuffle(filtered);
 
+            // Blindaje estricto de unicidad: ninguna imagen o video se repite en pantalla
+            const seen = new Set();
+            renderedItems = shuffled.filter(item => {
+                const uniqueKey = `${item.folder}/${item.file}`;
+                if (seen.has(uniqueKey)) return false;
+                seen.add(uniqueKey);
+                return true;
+            });
+
+            container.innerHTML = '';
             const preloadList = [];
 
             renderedItems.forEach((item, idx) => {
@@ -1935,10 +1941,8 @@
                 container.appendChild(card);
             });
 
-            // Enlazar los nuevos videos con el Smart Observer
             initSmartVideoEngine();
 
-            // Precarga en segundo plano con Web Worker
             if (bgWorker) {
                 if ('requestIdleCallback' in window) {
                     requestIdleCallback(() => bgWorker.postMessage({ urls: preloadList }));
@@ -1973,7 +1977,7 @@
 
             if (video.muted) {
                 video.muted = false;
-                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM19 12c0 3.17-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM3 9v6h4l5 5V4L7 9H3z"/></svg>';
+                btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM19 12c0 3.17-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
             } else {
                 video.muted = true;
                 btn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>';
@@ -2028,7 +2032,7 @@
             updateLightbox();
         }
 
-        // TOUCH SWIPE PARA EL LIGHTBOX
+        // TOUCH SWIPE PARA LIGHTBOX
         let touchStartX = 0;
         const lbStage = document.getElementById('lbStage');
         lbStage.addEventListener('touchstart', e => {
@@ -2062,7 +2066,7 @@
             document.getElementById('cookiesDrawer').classList.remove('active');
         }
 
-        // 8. MAPA LEAFLET INTERACTIVO: BANFIELD (PUEYRREDÓN 1291)
+        // 8. MAPA LEAFLET INTERACTIVO (BANFIELD)
         let mapInstance = null;
         function initPlantereriaMap() {
             if (mapInstance !== null) return;
