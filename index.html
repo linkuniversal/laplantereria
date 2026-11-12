@@ -380,7 +380,7 @@
         }
 
         /* ==========================================================================
-           7. VIDEO REEL CINEMATOGRÁFICO
+           7. VIDEO REEL CINEMATOGRÁFICO (HARDWARE OPTIMIZADO)
            ========================================================================== */
         .reel-player-stage {
             width: 100%;
@@ -660,7 +660,6 @@
             background: var(--plant-white-pure);
         }
 
-        /* CORRECCIÓN 1: AJUSTE TIPOGRÁFICO Y BLINDAJE DE SITIO WEB */
         .cell-official-web .cell-poster-headline {
             font-size: clamp(0.92rem, 3.8vw, 1.15rem);
             word-break: break-all;
@@ -825,7 +824,7 @@
         }
 
         /* ==========================================================================
-           11. RESPONSIVE PERFECCIONADO EN CARTA Y ESPACIOS (ZERO CORTE LATERAL)
+           11. RESPONSIVE PERFECCIONADO EN CARTA Y ESPACIOS
            ========================================================================== */
         .category-filter-tabs {
             display: flex;
@@ -1481,9 +1480,9 @@
             </div>
         </a>
 
-        <!-- VIDEO REEL EN VIVO -->
+        <!-- VIDEO REEL EN VIVO (CON SMART VIEWPORT OBSERVER) -->
         <section class="reel-player-stage">
-            <video id="plantereriaReelPlayer" class="reel-video-element" autoplay loop muted playsinline>
+            <video id="plantereriaReelPlayer" class="reel-video-element" loop muted playsinline preload="metadata">
                 <source src="Local/IMG_7115 2.mp4" type="video/mp4">
             </video>
             <div class="reel-vignette"></div>
@@ -1576,34 +1575,34 @@
 
             <div class="carousel-inner-track">
 
-                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Pasteleria/IMG_5753.mp4', 'Pastelería Artesanal Recién Horneada', true)">
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Pasteleria/IMG_5753.mp4', 'Pastelería Artesanal de la Casa', true)">
                     <span class="reel-scroll-tag">Pastelería</span>
-                    <video src="Pasteleria/IMG_5753.mp4" autoplay loop muted playsinline></video>
-                    <div class="reel-scroll-caption">Torta Vasca</div>
+                    <video src="Pasteleria/IMG_5753.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="reel-scroll-caption">Pastelería Artesanal</div>
                 </div>
 
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Algunas Plantas/IMG_5770 2.mp4', 'Vivero Boutique &amp; Suculentas', true)">
                     <span class="reel-scroll-tag">Plantas</span>
-                    <video src="Algunas Plantas/IMG_5770 2.mp4" autoplay loop muted playsinline></video>
+                    <video src="Algunas Plantas/IMG_5770 2.mp4" loop muted playsinline preload="metadata"></video>
                     <div class="reel-scroll-caption">Rincón Verde</div>
                 </div>
 
-                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Licuados de proteinas/IMG_7473.mp4', 'Licuados Proteicos Naturales', true)">
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Licuados de proteinas/IMG_7473.mp4', 'Batidos Proteicos Naturales', true)">
                     <span class="reel-scroll-tag">Bebidas</span>
-                    <video src="Licuados de proteinas/IMG_7473.mp4" autoplay loop muted playsinline></video>
-                    <div class="reel-scroll-caption">Proteína &amp; Fruta</div>
+                    <video src="Licuados de proteinas/IMG_7473.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="reel-scroll-caption">Batidos &amp; Fruta</div>
                 </div>
 
-                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Menu sin harinas/IMG_3363.mp4', 'Tostón Saludable de Huevo y Queso', true)">
+                <div class="reel-scroll-card" onclick="openLightboxFromDirect('Menu sin harinas/IMG_3363.mp4', 'Propuestas Saludables Sin Harinas', true)">
                     <span class="reel-scroll-tag">Healthy</span>
-                    <video src="Menu sin harinas/IMG_3363.mp4" autoplay loop muted playsinline></video>
-                    <div class="reel-scroll-caption">Sin Harinas</div>
+                    <video src="Menu sin harinas/IMG_3363.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="reel-scroll-caption">Menú Sin Harinas</div>
                 </div>
 
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Local/IMG_7115 2.mp4', 'El Salón y el Patio', true)">
                     <span class="reel-scroll-tag">El Local</span>
-                    <video src="Local/IMG_7115 2.mp4" autoplay loop muted playsinline></video>
-                    <div class="reel-scroll-caption">Patio &amp; Mesas</div>
+                    <video src="Local/IMG_7115 2.mp4" loop muted playsinline preload="metadata"></video>
+                    <div class="reel-scroll-caption">Patio &amp; Salón</div>
                 </div>
 
             </div>
@@ -1631,7 +1630,7 @@
 
             <!-- CONTENEDOR GRID DINÁMICO REESTRUCTURADO -->
             <div class="gallery-cards-grid" id="galleryGridContainer">
-                <!-- Inyectado y validado en tiempo real con Web Worker y WebAssembly -->
+                <!-- Renderizado optimizado con WASM, Worker y Smart Observer -->
             </div>
         </section>
 
@@ -1747,35 +1746,53 @@
         </div>
     </div>
 
-    <!-- CONTROLADORES JAVASCRIPT: MOTOR WASM + WORKER + BLINDAJE DE ASSETS -->
+    <!-- CONTROLADORES JAVASCRIPT: SMART OBSERVER + WORKER + WEBASSEMBLY -->
     <script>
         // ==========================================================================
-        // 1. DATASET CURADO Y RESIDUAL DE ASSETS VERIFICADOS
+        // 1. DATASET CURADO (3 FOTOS Y 1 VIDEO POR CATEGORÍA + TÍTULOS GENERALES)
         // ==========================================================================
         const VERIFIED_FALLBACK_IMAGES = [
             "Pasteleria/IMG_5732.webp",
-            "Pasteleria/IMG_5729.webp"
+            "Pasteleria/IMG_5729.webp",
+            "Algunas Plantas/IMG_5781.webp"
         ];
 
         const masterCatalog = [
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Cheesecake de Pistachos", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Torta Vasca Horneada", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Pastelería Recién Salida", cat: "Pastelería" },
+            // 1. PASTELERÍA (3 fotos + 1 video)
+            { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Pastelería Artesanal", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Horneados del Día", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Delicias de la Casa", cat: "Pastelería" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Dulces Momentos", cat: "Pastelería" },
             
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Café de Especialidad & Torta", cat: "Desayunos" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Mesa en el Jardín", cat: "Desayunos" },
+            // 2. DESAYUNOS Y MERIENDAS (3 fotos + 1 video)
+            { folder: "Pasteleria", file: "IMG_5753.mp4", isVideo: true, title: "Momento Cafetero", cat: "Desayunos" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Café de Especialidad", cat: "Desayunos" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Desayunos & Meriendas", cat: "Desayunos" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Pausa & Café", cat: "Desayunos" },
             
-            { folder: "Menu sin harinas", file: "IMG_3363.mp4", isVideo: true, title: "Tostón de Huevo & Queso", cat: "Sin Harinas" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Opciones Libres de Harina", cat: "Sin Harinas" },
+            // 3. ALGUNAS PLANTAS (3 fotos + 1 video)
+            { folder: "Algunas Plantas", file: "IMG_5770 2.mp4", isVideo: true, title: "Vivero Boutique", cat: "Plantas" },
+            { folder: "Algunas Plantas", file: "IMG_5781.webp", title: "Rincón Verde", cat: "Plantas" },
+            { folder: "Algunas Plantas", file: "IMG_5782.webp", title: "Botánica & Deco", cat: "Plantas" },
+            { folder: "Algunas Plantas", file: "IMG_5783.webp", title: "Naturaleza Viva", cat: "Plantas" },
             
-            { folder: "Algunas Plantas", file: "IMG_5770 2.mp4", isVideo: true, title: "Vivero & Suculentas", cat: "Plantas" },
-            { folder: "Algunas Plantas", file: "IMG_5771 2.mp4", isVideo: true, title: "Kalanchoes & Florales", cat: "Plantas" },
-            { folder: "Algunas Plantas", file: "IMG_5775 2.mp4", isVideo: true, title: "Macetas & Deco Verde", cat: "Plantas" },
+            // 4. MENÚ SIN HARINAS (3 fotos + 1 video)
+            { folder: "Menu sin harinas", file: "IMG_3363.mp4", isVideo: true, title: "Propuestas Ligeras", cat: "Sin Harinas" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Opciones Saludables", cat: "Sin Harinas" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Menú Sin Harinas", cat: "Sin Harinas" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Nutrición Consciente", cat: "Sin Harinas" },
             
-            { folder: "Local", file: "IMG_7115 2.mp4", isVideo: true, title: "Patio con Plantas Colgantes", cat: "El Local" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Mesas & Ambiente", cat: "El Local" },
+            // 5. LICUADOS DE PROTEÍNAS (3 fotos + 1 video)
+            { folder: "Licuados de proteinas", file: "IMG_7473.mp4", isVideo: true, title: "Batidos Proteicos", cat: "Licuados" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Energía Natural", cat: "Licuados" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Smoothies & Fruta", cat: "Licuados" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Frescura & Proteína", cat: "Licuados" },
 
-            { folder: "Licuados de proteinas", file: "IMG_7473.mp4", isVideo: true, title: "Smoothie Proteico Natural", cat: "Licuados" }
+            // 6. EL LOCAL (3 fotos + 1 video)
+            { folder: "Local", file: "IMG_7115 2.mp4", isVideo: true, title: "Patio & Salón", cat: "El Local" },
+            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Nuestros Espacios", cat: "El Local" },
+            { folder: "Algunas Plantas", file: "IMG_5779 2.webp", title: "El Jardín", cat: "El Local" },
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "La Casa en Banfield", cat: "El Local" }
         ];
 
         // GESTOR DE FALLBACK AUTOMÁTICO (IMPIDE CUALQUIER IMAGEN ROTA)
@@ -1787,7 +1804,41 @@
         }
 
         // ==========================================================================
-        // 2. MOTOR WEB WORKER INTEGRADO (PRECARGA EN SEGUNDO PLANO)
+        // 2. MOTOR SMART VIEWPORT: INTERSECTION OBSERVER (SOLO 1 VIDEO ACTIVO)
+        // ==========================================================================
+        let smartVideoObserver = null;
+
+        function initSmartVideoEngine() {
+            if (!('IntersectionObserver' in window)) return;
+
+            if (smartVideoObserver) smartVideoObserver.disconnect();
+
+            smartVideoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const video = entry.target;
+                    if (entry.isIntersecting && entry.intersectionRatio >= 0.25) {
+                        const playPromise = video.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(() => {});
+                        }
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, {
+                root: null,
+                threshold: [0, 0.25, 0.5]
+            });
+
+            // Conectar el observador a todos los videos de la página
+            document.querySelectorAll('video').forEach(video => {
+                video.preload = "metadata";
+                smartVideoObserver.observe(video);
+            });
+        }
+
+        // ==========================================================================
+        // 3. MOTOR WEB WORKER INTEGRADO (PRECARGA EN SEGUNDO PLANO MULTI-HILO)
         // ==========================================================================
         let bgWorker = null;
         try {
@@ -1795,7 +1846,7 @@
                 self.onmessage = function(e) {
                     const urls = e.data.urls || [];
                     urls.forEach(url => {
-                        fetch(url, { method: 'HEAD', mode: 'no-cors' }).catch(() => {});
+                        fetch(url, { method: 'GET', mode: 'no-cors' }).catch(() => {});
                     });
                 };
             `], { type: 'application/javascript' });
@@ -1805,12 +1856,12 @@
         }
 
         // ==========================================================================
-        // 3. MOTOR WEBASSEMBLY (WASM) PARA CÓMPUTO DE MEZCLA VELOZ
+        // 4. MOTOR WEBASSEMBLY (WASM) PARA CÓMPUTO ARITMÉTICO DE MEZCLA
         // ==========================================================================
         let wasmRandomGen = null;
         (async function initWasmModule() {
             try {
-                // Bytecode nativo WASM mínimo de 64 bytes para generación aritmética
+                // Bytecode nativo WASM mínimo de 64 bytes para generación aritmética en CPU
                 const wasmBytes = new Uint8Array([
                     0x00, 0x61, 0x73, 0x6d, 0x01, 0x00, 0x00, 0x00,
                     0x01, 0x06, 0x01, 0x60, 0x01, 0x7f, 0x01, 0x7f,
@@ -1871,8 +1922,8 @@
                 preloadList.push(path);
 
                 let mediaHtml = item.isVideo
-                    ? `<video src="${path}" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover;" onerror="handleMediaFallback(this)"></video>`
-                    : `<img src="${path}" alt="${item.title}" loading="lazy" onerror="handleMediaFallback(this)">`;
+                    ? `<video src="${path}" loop muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;" onerror="handleMediaFallback(this)"></video>`
+                    : `<img src="${path}" alt="${item.title}" loading="lazy" decoding="async" onerror="handleMediaFallback(this)">`;
 
                 card.innerHTML = `
                     <div class="photo-img-wrap">
@@ -1884,8 +1935,16 @@
                 container.appendChild(card);
             });
 
+            // Enlazar los nuevos videos con el Smart Observer
+            initSmartVideoEngine();
+
+            // Precarga en segundo plano con Web Worker
             if (bgWorker) {
-                bgWorker.postMessage({ urls: preloadList });
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(() => bgWorker.postMessage({ urls: preloadList }));
+                } else {
+                    bgWorker.postMessage({ urls: preloadList });
+                }
             }
         }
 
@@ -1905,7 +1964,7 @@
             renderGallery();
         }
 
-        // 4. REPRODUCTOR DE VIDEO
+        // 5. REPRODUCTOR DE VIDEO HERO & AUDIO
         function toggleReelAudio() {
             playTap();
             const video = document.getElementById('plantereriaReelPlayer');
@@ -1921,7 +1980,7 @@
             }
         }
 
-        // 5. LIGHTBOX INTERACTIVO
+        // 6. LIGHTBOX INTERACTIVO
         const lbModal = document.getElementById('galleryLightbox');
         const lbCounter = document.getElementById('lbCounter');
         const lbCaption = document.getElementById('lbCaption');
@@ -1992,7 +2051,7 @@
             }
         });
 
-        // 6. CAJÓN DE 16 COOKIES
+        // 7. CAJÓN DE 16 COOKIES
         function openCookiesDrawer() {
             playTap();
             document.getElementById('cookiesDrawer').classList.add('active');
@@ -2003,7 +2062,7 @@
             document.getElementById('cookiesDrawer').classList.remove('active');
         }
 
-        // 7. MAPA LEAFLET INTERACTIVO: BANFIELD (PUEYRREDÓN 1291)
+        // 8. MAPA LEAFLET INTERACTIVO: BANFIELD (PUEYRREDÓN 1291)
         let mapInstance = null;
         function initPlantereriaMap() {
             if (mapInstance !== null) return;
@@ -2037,7 +2096,7 @@
                 .openPopup();
         }
 
-        // 8. HÁPTICA & FÍSICA MAGNÉTICA
+        // 9. HÁPTICA & FÍSICA MAGNÉTICA
         function playTap() {
             if ('vibrate' in navigator) {
                 try { navigator.vibrate(8); } catch(e) {}
@@ -2061,6 +2120,7 @@
         // INICIALIZACIÓN
         window.addEventListener('DOMContentLoaded', () => {
             renderGallery();
+            initSmartVideoEngine();
             initPlantereriaMap();
         });
     </script>
