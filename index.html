@@ -64,6 +64,8 @@
             overflow-x: hidden;
             background-color: var(--plant-cream-soft);
             scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
         }
 
         body {
@@ -75,7 +77,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0 14px 84px;
+            padding: 0 14px calc(84px + env(safe-area-inset-bottom, 0px));
             position: relative;
             letter-spacing: -0.01em;
         }
@@ -380,7 +382,7 @@
         }
 
         /* ==========================================================================
-           7. VIDEO REEL CINEMATOGRÁFICO (CONGELAMIENTO INTELIGENTE)
+           7. VIDEO REEL CINEMATOGRÁFICO
            ========================================================================== */
         .reel-player-stage {
             width: 100%;
@@ -482,7 +484,7 @@
         }
 
         /* ==========================================================================
-           8. CTA PRINCIPAL DIRECTO A WHATSAPP
+           8. CTA PRINCIPAL DIRECTO A WHATSAPP (CON ID PARA DISPARADOR)
            ========================================================================== */
         .card-hero-whatsapp {
             display: flex;
@@ -708,7 +710,7 @@
         }
 
         /* ==========================================================================
-           10. SHOWCASE EN RECUADROS HOMOGÉNEOS (EXACTAMENTE 3 VIDEOS)
+           10. SHOWCASE EN RECUADROS HOMOGÉNEOS (PRELOAD NONE EN VIDEOS SECUNDARIOS)
            ========================================================================== */
         .showcase-enclosure-white {
             background: var(--plant-white-pure);
@@ -824,7 +826,7 @@
         }
 
         /* ==========================================================================
-           11. RESPONSIVE EN CARTA Y ESPACIOS
+           11. CARTA & ESPACIOS (GRILLA ÁUREA ULTRA-VELOZ)
            ========================================================================== */
         .category-filter-tabs {
             display: flex;
@@ -1273,7 +1275,7 @@
         }
 
         /* ==========================================================================
-           15. REDES SOCIALES & BOTÓN FLOTANTE
+           15. REDES SOCIALES & BOTÓN FLOTANTE SMART SCROLL
            ========================================================================== */
         .social-network-bar {
             display: flex;
@@ -1306,15 +1308,26 @@
 
         .social-circle-btn svg { width: 20px; height: 20px; fill: currentColor; }
 
+        /* BOTÓN FLOTANTE: SMART SCROLL (OCULTO INICIALMENTE, APARECE TRAS EL HERO) */
         .floating-pin-portal {
             position: fixed;
-            bottom: 20px;
+            bottom: calc(20px + env(safe-area-inset-bottom, 0px));
             right: 16px;
             display: flex;
             align-items: center;
             gap: 8px;
             z-index: 999;
             text-decoration: none;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(22px);
+            transition: opacity 0.3s ease, transform 0.3s var(--spring);
+        }
+
+        .floating-pin-portal.is-visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
         }
 
         .floating-pill-caption {
@@ -1468,8 +1481,8 @@
             </div>
         </section>
 
-        <!-- CTA HERO DIRECTO A WHATSAPP -->
-        <a href="https://wa.me/5491162501098?text=%C2%A1Hola%20La%20Planterer%C3%ADa!%20%F0%9F%8C%BF%20Quisiera%20hacer%20un%20pedido%20o%20consultar%20por%20sus%20mesas%20y%20pasteler%C3%ADa." target="_blank" rel="noopener noreferrer" class="card-hero-whatsapp" onclick="playTap()">
+        <!-- CTA HERO DIRECTO A WHATSAPP (CON ID PARA SMART SCROLL) -->
+        <a id="heroWhatsAppBtn" href="https://wa.me/5491162501098?text=%C2%A1Hola%20La%20Planterer%C3%ADa!%20%F0%9F%8C%BF%20Quisiera%20hacer%20un%20pedido%20o%20consultar%20por%20sus%20mesas%20y%20pasteler%C3%ADa." target="_blank" rel="noopener noreferrer" class="card-hero-whatsapp" onclick="playTap()">
             <div class="hero-wpp-info">
                 <span class="hero-live-badge"><i class="beacon-core"></i> Banfield · Atención Inmediata</span>
                 <h2 class="hero-title-wpp">Pedidos &amp; Consultas</h2>
@@ -1480,7 +1493,7 @@
             </div>
         </a>
 
-        <!-- 1. VIDEO REEL HERO (CONGELAMIENTO INTELIGENTE AL SCROLLEAR) -->
+        <!-- 1. VIDEO REEL HERO -->
         <section class="reel-player-stage">
             <video id="plantereriaReelPlayer" class="reel-video-element" loop muted playsinline preload="metadata">
                 <source src="Local/IMG_7115 2.mp4" type="video/mp4">
@@ -1566,7 +1579,7 @@
 
         </section>
 
-        <!-- 2. REELS Y MOMENTOS EN VIDEO (EXACTAMENTE 3 VIDEOS CON CONGELAMIENTO) -->
+        <!-- 2. REELS Y MOMENTOS EN VIDEO (CON PRELOAD="NONE" PARA EVITAR SATURAR LA RED) -->
         <section class="showcase-enclosure-white">
             <div class="enclosure-header-row">
                 <span class="enclosure-title-main">Momentos en Video</span>
@@ -1578,28 +1591,28 @@
                 <!-- VIDEO 1: PASTELERÍA -->
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Pasteleria/IMG_5753.mp4', 'Pastelería Artesanal de la Casa', true)">
                     <span class="reel-scroll-tag">Pastelería</span>
-                    <video src="Pasteleria/IMG_5753.mp4" loop muted playsinline preload="metadata"></video>
+                    <video src="Pasteleria/IMG_5753.mp4" loop muted playsinline preload="none"></video>
                     <div class="reel-scroll-caption">Pastelería Artesanal</div>
                 </div>
 
                 <!-- VIDEO 2: PLANTAS -->
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Algunas Plantas/IMG_5770 2.mp4', 'Vivero Boutique &amp; Suculentas', true)">
                     <span class="reel-scroll-tag">Plantas</span>
-                    <video src="Algunas Plantas/IMG_5770 2.mp4" loop muted playsinline preload="metadata"></video>
+                    <video src="Algunas Plantas/IMG_5770 2.mp4" loop muted playsinline preload="none"></video>
                     <div class="reel-scroll-caption">Rincón Verde</div>
                 </div>
 
                 <!-- VIDEO 3: LICUADOS / BEBIDAS -->
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Licuados de proteinas/IMG_7473.mp4', 'Batidos Proteicos Naturales', true)">
                     <span class="reel-scroll-tag">Bebidas</span>
-                    <video src="Licuados de proteinas/IMG_7473.mp4" loop muted playsinline preload="metadata"></video>
+                    <video src="Licuados de proteinas/IMG_7473.mp4" loop muted playsinline preload="none"></video>
                     <div class="reel-scroll-caption">Batidos &amp; Fruta</div>
                 </div>
 
             </div>
         </section>
 
-        <!-- 3. CARTA & ESPACIOS (SOLO FOTOS .WEBP, CERO VIDEOS EN LA GRILLA) -->
+        <!-- 3. CARTA & ESPACIOS (EXACTAMENTE 7 FOTOS MAESTRAS ULTRA-RÁPIDAS) -->
         <section class="showcase-enclosure-gold">
             <div class="enclosure-header-row">
                 <span class="enclosure-title-main">Carta &amp; Espacios</span>
@@ -1619,9 +1632,9 @@
                 <button class="cat-tab-btn" onclick="filterGalleryByCategory('Local')">🏡 El Local</button>
             </div>
 
-            <!-- CONTENEDOR GRID DINÁMICO (SOLO FOTOS) -->
+            <!-- CONTENEDOR GRID DINÁMICO (7 FOTOS CON ALTA PRIORIDAD) -->
             <div class="gallery-cards-grid" id="galleryGridContainer">
-                <!-- Inyectado sin videos ni duplicados -->
+                <!-- Inyectado por JavaScript al instante -->
             </div>
         </section>
 
@@ -1679,8 +1692,8 @@
 
     </main>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
-    <a href="https://wa.me/5491162501098" class="floating-pin-portal" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" onclick="playTap()">
+    <!-- BOTÓN FLOTANTE WHATSAPP (CON FUNCIÓN SMART SCROLL IDENTIFICADA) -->
+    <a id="floatingConcierge" href="https://wa.me/5491162501098" class="floating-pin-portal" target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" onclick="playTap()">
         <span class="floating-pill-caption">WhatsApp</span>
         <div class="floating-circle-glyph">
             <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
@@ -1737,10 +1750,10 @@
         </div>
     </div>
 
-    <!-- CONTROLADORES JAVASCRIPT: RENDIMIENTO MÁXIMO -->
+    <!-- CONTROLADORES JAVASCRIPT: MÁXIMO RENDIMIENTO -->
     <script>
         // ==========================================================================
-        // 1. DATASET DE FOTOS ÚNICAS (CERO VIDEOS EN LA GRILLA, FOTOS REALES)
+        // 1. DATASET OPTIMIZADO: EXACTAMENTE 7 FOTOS MAESTRAS ÚNICAS
         // ==========================================================================
         const VERIFIED_FALLBACK_IMAGES = [
             "Pasteleria/IMG_5732.webp",
@@ -1749,39 +1762,13 @@
         ];
 
         const masterCatalog = [
-            // 1. PASTELERÍA (4 fotos únicas)
-            { folder: "Pasteleria", file: "IMG_5714.webp", title: "Pastelería Artesanal", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5729.webp", title: "Delicias de la Casa", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Dulces Momentos", cat: "Pastelería" },
-            { folder: "Pasteleria", file: "IMG_5744.webp", title: "Horneados del Día", cat: "Pastelería" },
-            
-            // 2. DESAYUNOS Y MERIENDAS (4 fotos únicas)
-            { folder: "Desayunos y meriendas", file: "IMG_7127 2.webp", title: "Café de Especialidad", cat: "Desayunos" },
-            { folder: "Desayunos y meriendas", file: "IMG_7130 2.webp", title: "Desayunos & Meriendas", cat: "Desayunos" },
-            { folder: "Desayunos y meriendas", file: "IMG_7414 5.webp", title: "Momento Cafetero", cat: "Desayunos" },
-            { folder: "Desayunos y meriendas", file: "IMG_7424.webp", title: "Pausa & Café", cat: "Desayunos" },
-            
-            // 3. ALGUNAS PLANTAS (4 fotos únicas)
+            { folder: "Pasteleria", file: "IMG_5732.webp", title: "Pastelería Artesanal", cat: "Pastelería" },
+            { folder: "Desayunos y meriendas", file: "IMG_7414 5.webp", title: "Café de Especialidad", cat: "Desayunos" },
             { folder: "Algunas Plantas", file: "IMG_5781.webp", title: "Rincón Verde", cat: "Plantas" },
-            { folder: "Algunas Plantas", file: "IMG_5782.webp", title: "Botánica & Deco", cat: "Plantas" },
-            { folder: "Algunas Plantas", file: "IMG_5783.webp", title: "Vivero Boutique", cat: "Plantas" },
-            { folder: "Algunas Plantas", file: "IMG_5784.webp", title: "Naturaleza Viva", cat: "Plantas" },
-            
-            // 4. MENÚ SIN HARINAS (4 fotos únicas)
             { folder: "Menu sin harinas", file: "IMG_3356.webp", title: "Menú Sin Harinas", cat: "Sin Harinas" },
-            { folder: "Menu sin harinas", file: "IMG_3386 2.webp", title: "Opciones Saludables", cat: "Sin Harinas" },
-            { folder: "Menu sin harinas", file: "IMG_5700.webp", title: "Propuestas Ligeras", cat: "Sin Harinas" },
-            { folder: "Menu sin harinas", file: "IMG_5701 2.webp", title: "Nutrición Consciente", cat: "Sin Harinas" },
-            
-            // 5. LICUADOS DE PROTEÍNAS (2 fotos únicas)
             { folder: "Licuados de proteinas", file: "IMG_7470 2.webp", title: "Batidos Proteicos", cat: "Licuados" },
-            { folder: "Licuados de proteinas", file: "IMG_7471.webp", title: "Energía Natural", cat: "Licuados" },
-
-            // 6. EL LOCAL (4 fotos únicas)
             { folder: "Local", file: "IMG_7107 3.webp", title: "Patio & Salón", cat: "El Local" },
-            { folder: "Local", file: "IMG_7108 4.webp", title: "Nuestros Espacios", cat: "El Local" },
-            { folder: "Local", file: "IMG_7109.webp", title: "El Jardín", cat: "El Local" },
-            { folder: "Local", file: "IMG_7114 4.webp", title: "La Casa en Banfield", cat: "El Local" }
+            { folder: "Pasteleria", file: "IMG_5714.webp", title: "Delicias Horneadas", cat: "Pastelería" }
         ];
 
         function handleMediaFallback(imgElement) {
@@ -1792,39 +1779,26 @@
         }
 
         // ==========================================================================
-        // 2. CONGELAMIENTO INTELIGENTE DE VIDEOS (SOLO 4 VIDEOS EN TODA LA PÁGINA)
+        // 2. CONGELAMIENTO INTELIGENTE DEL VIDEO HERO PRINCIPAL
         // ==========================================================================
         let smartVideoObserver = null;
 
         function initSmartVideoEngine() {
-            if (!('IntersectionObserver' in window)) return;
+            const heroVideo = document.getElementById('plantereriaReelPlayer');
+            if (!heroVideo || !('IntersectionObserver' in window)) return;
 
-            if (smartVideoObserver) smartVideoObserver.disconnect();
-
-            // Detecta cuando el video está visible al menos en un 20%
             smartVideoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    const video = entry.target;
                     if (entry.isIntersecting && entry.intersectionRatio >= 0.20) {
-                        const playPromise = video.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(() => {});
-                        }
+                        const playPromise = heroVideo.play();
+                        if (playPromise !== undefined) playPromise.catch(() => {});
                     } else {
-                        // Se congela de inmediato apenas scrolleas
-                        video.pause();
+                        heroVideo.pause();
                     }
                 });
-            }, {
-                root: null,
-                threshold: [0, 0.20]
-            });
+            }, { threshold: [0, 0.20] });
 
-            // Conecta exclusivamente a los 4 videos
-            document.querySelectorAll('video').forEach(video => {
-                video.preload = "metadata";
-                smartVideoObserver.observe(video);
-            });
+            smartVideoObserver.observe(heroVideo);
         }
 
         // ==========================================================================
@@ -1867,7 +1841,7 @@
         }
 
         // ==========================================================================
-        // 4. RENDERIZADOR ULTRA-RÁPIDO (SOLO FOTOS .WEBP, BLINDAJE DE UNICIDAD)
+        // 4. RENDERIZADOR INSTANTÁNEO CON FETCHPRIORITY="HIGH" (CARGA AL TOQUE)
         // ==========================================================================
         let currentFilter = 'all';
         let renderedItems = [];
@@ -1881,17 +1855,7 @@
                 ? [...masterCatalog] 
                 : masterCatalog.filter(item => item.folder === currentFilter || item.cat.toLowerCase().includes(currentFilter.toLowerCase()));
 
-            let shuffled = shuffle(filtered);
-
-            // Blindaje estricto: ninguna foto se puede repetir en pantalla
-            const seen = new Set();
-            renderedItems = shuffled.filter(item => {
-                const uniqueKey = `${item.folder}/${item.file}`;
-                if (seen.has(uniqueKey)) return false;
-                seen.add(uniqueKey);
-                return true;
-            });
-
+            renderedItems = shuffle(filtered);
             container.innerHTML = '';
 
             renderedItems.forEach((item, idx) => {
@@ -1904,7 +1868,7 @@
                 card.innerHTML = `
                     <div class="photo-img-wrap">
                         <span class="photo-cat-tag">${item.cat}</span>
-                        <img src="${path}" alt="${item.title}" loading="lazy" decoding="async" onerror="handleMediaFallback(this)">
+                        <img src="${path}" alt="${item.title}" fetchpriority="high" decoding="async" onerror="handleMediaFallback(this)">
                     </div>
                     <span class="photo-title-label">${item.title}</span>
                 `;
@@ -1928,7 +1892,43 @@
             renderGallery();
         }
 
-        // 5. AUDIO DEL HERO VIDEO
+        // ==========================================================================
+        // 5. SMART SCROLL FLOTANTE: APARECE ÚNICAMENTE CUANDO SE PASA EL BOTÓN HERO DE WPP
+        // ==========================================================================
+        function initSmartFloatingWhatsApp() {
+            const heroWhatsAppBtn = document.getElementById('heroWhatsAppBtn');
+            const floatingConcierge = document.getElementById('floatingConcierge');
+
+            if (heroWhatsAppBtn && floatingConcierge && 'IntersectionObserver' in window) {
+                const heroObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            floatingConcierge.classList.remove('is-visible');
+                        } else {
+                            const heroRect = heroWhatsAppBtn.getBoundingClientRect();
+                            if (heroRect.top < 0) {
+                                floatingConcierge.classList.add('is-visible');
+                            } else {
+                                floatingConcierge.classList.remove('is-visible');
+                            }
+                        }
+                    });
+                }, { threshold: 0 });
+                heroObserver.observe(heroWhatsAppBtn);
+            } else if (floatingConcierge) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 380) {
+                        floatingConcierge.classList.add('is-visible');
+                    } else {
+                        floatingConcierge.classList.remove('is-visible');
+                    }
+                }, { passive: true });
+            }
+        }
+
+        // ==========================================================================
+        // 6. AUDIO DEL HERO VIDEO
+        // ==========================================================================
         function toggleReelAudio() {
             playTap();
             const video = document.getElementById('plantereriaReelPlayer');
@@ -1944,7 +1944,9 @@
             }
         }
 
-        // 6. LIGHTBOX INTERACTIVO
+        // ==========================================================================
+        // 7. LIGHTBOX INTERACTIVO
+        // ==========================================================================
         const lbModal = document.getElementById('galleryLightbox');
         const lbCounter = document.getElementById('lbCounter');
         const lbCaption = document.getElementById('lbCaption');
@@ -2014,7 +2016,9 @@
             }
         });
 
-        // 7. CAJÓN DE 16 COOKIES
+        // ==========================================================================
+        // 8. CAJÓN DE 16 COOKIES
+        // ==========================================================================
         function openCookiesDrawer() {
             playTap();
             document.getElementById('cookiesDrawer').classList.add('active');
@@ -2025,7 +2029,9 @@
             document.getElementById('cookiesDrawer').classList.remove('active');
         }
 
-        // 8. MAPA LEAFLET INTERACTIVO (BANFIELD)
+        // ==========================================================================
+        // 9. MAPA LEAFLET INTERACTIVO (BANFIELD)
+        // ==========================================================================
         let mapInstance = null;
         function initPlantereriaMap() {
             if (mapInstance !== null) return;
@@ -2059,7 +2065,9 @@
                 .openPopup();
         }
 
-        // 9. HÁPTICA & FÍSICA MAGNÉTICA
+        // ==========================================================================
+        // 10. HÁPTICA & FÍSICA MAGNÉTICA
+        // ==========================================================================
         function playTap() {
             if ('vibrate' in navigator) {
                 try { navigator.vibrate(8); } catch(e) {}
@@ -2080,10 +2088,13 @@
             });
         }
 
+        // ==========================================================================
         // INICIALIZACIÓN
+        // ==========================================================================
         window.addEventListener('DOMContentLoaded', () => {
             renderGallery();
             initSmartVideoEngine();
+            initSmartFloatingWhatsApp();
             initPlantereriaMap();
         });
     </script>
