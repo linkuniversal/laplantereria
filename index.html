@@ -710,7 +710,7 @@
         }
 
         /* ==========================================================================
-           10. SHOWCASE EN RECUADROS HOMOGÉNEOS (PRELOAD NONE EN VIDEOS SECUNDARIOS)
+           10. SHOWCASE EN RECUADROS HOMOGÉNEOS
            ========================================================================== */
         .showcase-enclosure-white {
             background: var(--plant-white-pure);
@@ -1579,7 +1579,7 @@
 
         </section>
 
-        <!-- 2. REELS Y MOMENTOS EN VIDEO (CON PRELOAD="NONE" PARA EVITAR SATURAR LA RED) -->
+        <!-- 2. REELS Y MOMENTOS EN VIDEO (CARGA FLUIDA Y VISIBLE CON PRELOAD METADATA) -->
         <section class="showcase-enclosure-white">
             <div class="enclosure-header-row">
                 <span class="enclosure-title-main">Momentos en Video</span>
@@ -1591,21 +1591,21 @@
                 <!-- VIDEO 1: PASTELERÍA -->
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Pasteleria/IMG_5753.mp4', 'Pastelería Artesanal de la Casa', true)">
                     <span class="reel-scroll-tag">Pastelería</span>
-                    <video src="Pasteleria/IMG_5753.mp4" loop muted playsinline preload="none"></video>
+                    <video src="Pasteleria/IMG_5753.mp4" loop muted playsinline preload="metadata"></video>
                     <div class="reel-scroll-caption">Pastelería Artesanal</div>
                 </div>
 
                 <!-- VIDEO 2: PLANTAS -->
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Algunas Plantas/IMG_5770 2.mp4', 'Vivero Boutique &amp; Suculentas', true)">
                     <span class="reel-scroll-tag">Plantas</span>
-                    <video src="Algunas Plantas/IMG_5770 2.mp4" loop muted playsinline preload="none"></video>
+                    <video src="Algunas Plantas/IMG_5770 2.mp4" loop muted playsinline preload="metadata"></video>
                     <div class="reel-scroll-caption">Rincón Verde</div>
                 </div>
 
                 <!-- VIDEO 3: LICUADOS / BEBIDAS -->
                 <div class="reel-scroll-card" onclick="openLightboxFromDirect('Licuados de proteinas/IMG_7473.mp4', 'Batidos Proteicos Naturales', true)">
                     <span class="reel-scroll-tag">Bebidas</span>
-                    <video src="Licuados de proteinas/IMG_7473.mp4" loop muted playsinline preload="none"></video>
+                    <video src="Licuados de proteinas/IMG_7473.mp4" loop muted playsinline preload="metadata"></video>
                     <div class="reel-scroll-caption">Batidos &amp; Fruta</div>
                 </div>
 
@@ -1779,26 +1779,33 @@
         }
 
         // ==========================================================================
-        // 2. CONGELAMIENTO INTELIGENTE DEL VIDEO HERO PRINCIPAL
+        // 2. CONGELAMIENTO Y REPRODUCCIÓN INTELIGENTE DE TODOS LOS VIDEOS (HERO Y REELS)
         // ==========================================================================
         let smartVideoObserver = null;
 
         function initSmartVideoEngine() {
-            const heroVideo = document.getElementById('plantereriaReelPlayer');
-            if (!heroVideo || !('IntersectionObserver' in window)) return;
+            if (!('IntersectionObserver' in window)) return;
 
             smartVideoObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
+                    const vid = entry.target;
                     if (entry.isIntersecting && entry.intersectionRatio >= 0.20) {
-                        const playPromise = heroVideo.play();
+                        const playPromise = vid.play();
                         if (playPromise !== undefined) playPromise.catch(() => {});
                     } else {
-                        heroVideo.pause();
+                        vid.pause();
                     }
                 });
             }, { threshold: [0, 0.20] });
 
-            smartVideoObserver.observe(heroVideo);
+            // Video Hero
+            const heroVideo = document.getElementById('plantereriaReelPlayer');
+            if (heroVideo) smartVideoObserver.observe(heroVideo);
+
+            // 3 Videos del carrusel de Momentos en Video
+            document.querySelectorAll('.reel-scroll-card video').forEach(v => {
+                smartVideoObserver.observe(v);
+            });
         }
 
         // ==========================================================================
